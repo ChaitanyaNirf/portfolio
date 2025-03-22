@@ -1,0 +1,48 @@
+.tabs {
+  background: #252526;
+  padding: 5px 10px;
+  border-bottom: 1px solid #333;
+  display: flex;
+  align-items: center;
+}
+
+.tabs span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-bottom: none;
+  margin-right: 5px;
+  cursor: pointer;
+  color: #ccc;
+  font-size: 14px;
+  border-radius: 5px 5px 0 0;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.tabs span:hover {
+  background: #2d2d2d;
+  color: #fff;
+}
+
+.tabs span.active {
+  background: #007acc;
+  color: white;
+  border-color: #007acc;
+  box-shadow: 0px -2px 5px rgba(0, 122, 204, 0.5);
+}
+
+.tabs span button {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.tabs span button:hover {
+  color: #fff;
+}
