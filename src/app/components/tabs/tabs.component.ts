@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./tabs.component.css']
 })
 export class TabsComponent {
+[x: string]: any;
   @Input() openTabs: string[] = []; 
   @Input() activeTab: string = '';
 

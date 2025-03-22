@@ -1,13 +1,15 @@
 <div class="sidebar">
-    <h3>Chaitanya Nirfarake</h3>
-    <ul>
-      <li *ngFor="let tab of allTabs" (click)="openSection(tab)">
-        <i *ngIf="tab.toLowerCase() === 'experience'" class="fas fa-briefcase"></i>
-        <i *ngIf="tab.toLowerCase() === 'projects'" class="fas fa-code"></i>
-        <i *ngIf="tab.toLowerCase() === 'publications'" class="fas fa-book"></i>
-        <i *ngIf="tab.toLowerCase() === 'contact'" class="fas fa-envelope"></i>
-        <i *ngIf="tab.toLowerCase() === 'welcome'" class="fas fa-briefcase"></i>
+  <h3>Chaitanya Nirfarake</h3>
+  <ul>
+    <li *ngFor="let tab of allTabs" (click)="openSection(tab)">
+      <span *ngIf="tab.toLowerCase() !== 'none'">
+        <i *ngIf="tab.toLowerCase() === 'experience'" class="fas fa-briefcase"></i> <!-- Work/Job -->
+        <i *ngIf="tab.toLowerCase() === 'projects'" class="fas fa-laptop-code"></i> <!-- Coding Projects -->
+        <i *ngIf="tab.toLowerCase() === 'publications'" class="fas fa-newspaper"></i> <!-- Articles/Publications -->
+        <i *ngIf="tab.toLowerCase() === 'contact'" class="fas fa-id-badge"></i> <!-- Contact Info -->
+        <i *ngIf="tab.toLowerCase() === 'welcome'" class="fas fa-home"></i> <!-- Home/Welcome -->
         {{ tab }}
-      </li>
-    </ul>
-  </div>
+      </span>
+    </li>
+  </ul>
+</div>

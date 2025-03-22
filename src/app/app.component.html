@@ -4,8 +4,8 @@
     <app-tabs 
       [openTabs]="openTabs" 
       [activeTab]="activeTab" 
-      (tabChanged)="switchTab($event)" 
-      (tabClosed)="updateOpenTabs($event)">
+      (tabClosed)="updateOpenTabs($event)"
+      (tabChanged)="switchTab($event)">
     </app-tabs>
     <app-editor [content]="editorContent"></app-editor>
   </div>
