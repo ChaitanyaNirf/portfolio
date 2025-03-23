@@ -1,0 +1,36 @@
+.heatmap-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.month-labels {
+  display: grid;
+  grid-template-columns: repeat(53, 1fr);
+  width: 100%;
+  font-size: 12px;
+  color: #bbb;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(53, 12px);
+  grid-gap: 2px;
+}
+
+.heatmap-day {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.heatmap-day:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+}
+

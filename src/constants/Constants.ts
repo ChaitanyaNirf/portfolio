@@ -1,3 +1,4 @@
 export const Constants = {
-    ALL_TABS : ['welcome', 'Experience', 'Projects', 'Publications', 'Contact']
+    ALL_TABS : ['Welcome', 'Experience', 'Projects', 'Publications', 'Resume', 'Github', 'Leetcode','Contact', 'None'],
+    LEETCODE_USERNAME : 'ChaitanyaNirf',
 }

@@ -1,8 +1,10 @@
 <div class="tabs">
-  <span *ngFor="let tab of openTabs" 
-        (click)="switchTab(tab)" 
-        [class.active]="tab === activeTab">
-    {{ tab | titlecase }}
-    <button class="fa fa-window-close" aria-hidden="true" (click)="closeTab(tab)"></button>
-  </span>
+  <ng-container *ngFor="let tab of openTabs">
+    <span *ngIf="tab.toLowerCase() !== 'none'" 
+          (click)="switchTab(tab)" 
+          [class.active]="tab === activeTab">
+      {{ tab | titlecase }}
+      <button class="fa fa-window-close" aria-hidden="true" (click)="closeTab(tab)"></button>
+    </span>
+  </ng-container>
 </div>
