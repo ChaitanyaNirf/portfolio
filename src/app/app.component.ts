@@ -71,7 +71,8 @@ export class AppComponent {
       <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/chaitanyanirfarake" target="_blank">linkedin.com/in/chaitanyanirfarake</a></p>
       <p><strong>GitHub:</strong> <a href="https://github.com/ChaitanyaNirf" target="_blank">github.com/ChaitanyaNirf</a></p>
     `,
-
+    'resume': `Handled by the resume component`,
+    'leetcode': `Handled by the leetcode component`,
     'none' : `<p>Nothing to see 🤷‍♂️</p>`
   };
   
@@ -80,10 +81,10 @@ export class AppComponent {
   editorContent: string = this.contentMap['welcome'];
 
   openSection(section: string) {
-    if (!this.openTabs.includes(section)) {
-      this.openTabs.push(section);
+    if (!this.openTabs.includes(section.toLowerCase())) {
+      this.openTabs.push(section.toLowerCase());
     }
-    this.switchTab(section);
+    this.switchTab(section.toLowerCase());
   }
 
   updateOpenTabs(closedTab: string) {
@@ -101,8 +102,9 @@ export class AppComponent {
 
   switchTab(section: string)  {
     console.log('Switch tab ' + section + '  open tabs : ' + this.openTabs);
-    if(this.openTabs.includes(section)){
-      this.activeTab = section;
+    if(this.openTabs.includes(section.toLowerCase())){
+      this.activeTab = section.toLowerCase();
+      
       this.editorContent = this.contentMap[section.toLowerCase()] || '<p>No content available.</p>';
     }else{
       this.activeTab = this.openTabs[this.openTabs.length - 1];

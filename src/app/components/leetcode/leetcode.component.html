@@ -1,0 +1,36 @@
+<div *ngIf="isLoading; else dataLoaded">
+  <p>Loading...</p>
+</div>
+
+<ng-template #dataLoaded>
+  <div *ngIf="leetcodeData; else errorTemplate">
+    <p><strong>Total Solved:</strong> {{ leetcodeData.totalSolved }} / {{ leetcodeData.totalQuestions }}</p>
+    <p><strong>Acceptance Rate:</strong> {{ leetcodeData.acceptanceRate }}%</p>
+    <p><strong>Ranking:</strong> {{ leetcodeData.ranking }}</p>
+
+    <div class="heatmap-container">
+      <div class="month-labels">
+        <span *ngFor="let month of monthLabels" [style.gridColumnStart]="month.position + 1">
+          {{ month.name }}
+        </span>
+      </div>
+      <div class="heatmap-grid">
+        <ng-container *ngFor="let week of weeks; let weekIndex = index">
+          <!-- Check if a new month starts and add a separator -->
+          <div *ngIf="isMonthChange(weekIndex)" class="month-separator"></div>
+      
+          <div *ngFor="let day of week"
+               class="heatmap-day"
+               [style.background]="getHeatmapColor(day.count)"
+               [title]="'Date: ' + day.date + ', Submissions: ' + day.count">
+          </div>
+        </ng-container>
+      </div>
+      
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #errorTemplate>
+  <p>Error loading LeetCode data.</p>
+</ng-template>

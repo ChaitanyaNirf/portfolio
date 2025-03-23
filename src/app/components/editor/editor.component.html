@@ -1,4 +1,15 @@
 <div class="content">
-    <div [innerHTML]="content"></div>
-  </div>
-  
+  <ng-container *ngIf="activeTab.toLowerCase() === 'resume'; else checkLeetcode">
+    <app-resume></app-resume>
+  </ng-container>
+
+  <ng-template #checkLeetcode>
+    <ng-container *ngIf="activeTab.toLowerCase() === 'leetcode'; else defaultContent">
+      <app-leetcode></app-leetcode>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #defaultContent>
+    <div [innerHTML]="sanitizedContent"></div>
+  </ng-template>
+</div>
