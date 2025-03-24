@@ -1,36 +1,82 @@
-<div *ngIf="isLoading; else dataLoaded">
-  <p>Loading...</p>
+<div *ngIf="isLoading" class="loading">
+  Loading LeetCode data...
 </div>
 
-<ng-template #dataLoaded>
-  <div *ngIf="leetcodeData; else errorTemplate">
-    <p><strong>Total Solved:</strong> {{ leetcodeData.totalSolved }} / {{ leetcodeData.totalQuestions }}</p>
-    <p><strong>Acceptance Rate:</strong> {{ leetcodeData.acceptanceRate }}%</p>
-    <p><strong>Ranking:</strong> {{ leetcodeData.ranking }}</p>
+<div *ngIf="!isLoading && monthlyData.size === 0" class="no-data">
+  No submission data available.
+</div>
 
-    <div class="heatmap-container">
-      <div class="month-labels">
-        <span *ngFor="let month of monthLabels" [style.gridColumnStart]="month.position + 1">
-          {{ month.name }}
-        </span>
+<div class="user-profile">
+  <h2>{{ userProfile.username }}</h2>
+
+  <!-- Global Rank -->
+  <p class="global-rank">🌍 Global Rank: <strong>{{ userProfile.globalRank }}</strong></p>
+
+  <!-- Problems Solved Section -->
+  <div class="stats">
+    <p><strong>Problems Solved</strong></p>
+
+    <div class="stat-item">
+      <span>Easy</span>
+      <div class="progress-bar easy">
+        <div [style.width.%]="userProfile.easyPercentage"></div>
       </div>
-      <div class="heatmap-grid">
-        <ng-container *ngFor="let week of weeks; let weekIndex = index">
-          <!-- Check if a new month starts and add a separator -->
-          <div *ngIf="isMonthChange(weekIndex)" class="month-separator"></div>
-      
-          <div *ngFor="let day of week"
-               class="heatmap-day"
-               [style.background]="getHeatmapColor(day.count)"
-               [title]="'Date: ' + day.date + ', Submissions: ' + day.count">
-          </div>
-        </ng-container>
+      <span class="badge easy">{{ userProfile.easySolved }}/{{ userProfile.totalEasy }}</span>
+    </div>
+
+    <div class="stat-item">
+      <span>Medium</span>
+      <div class="progress-bar medium">
+        <div [style.width.%]="userProfile.mediumPercentage"></div>
       </div>
-      
+      <span class="badge medium">{{ userProfile.mediumSolved }}/{{ userProfile.totalMedium }}</span>
+    </div>
+
+    <div class="stat-item">
+      <span>Hard</span>
+      <div class="progress-bar hard">
+        <div [style.width.%]="userProfile.hardPercentage"></div>
+      </div>
+      <span class="badge hard">{{ userProfile.hardSolved }}/{{ userProfile.totalHard }}</span>
     </div>
   </div>
-</ng-template>
 
-<ng-template #errorTemplate>
-  <p>Error loading LeetCode data.</p>
-</ng-template>
+  <!-- Reputation & Contribution -->
+  <div class="reputation">
+    ⭐ Reputation: <strong>{{ userProfile.reputation }}</strong> | 🎖️ Contribution: <strong>{{ userProfile.contributionPoints }}</strong>
+  </div>
+
+  <!-- LeetCode Profile Link -->
+  <a class="leetcode-link" [href]="userProfile.profileUrl" target="_blank">
+    🔗 View LeetCode Profile
+  </a>
+</div>
+
+<div *ngIf="!isLoading" class="heatmap-container">
+  <!-- Display Heatmap -->
+  <div *ngFor="let monthKey of monthlyData.keys()" class="month-section">
+    <h3>{{ getMonthName(monthKey) }}</h3>
+    <table class="heatmap">
+      <thead>
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let week of getMonthView(monthKey)">
+          <td *ngFor="let day of week"
+              [style.backgroundColor]="getHeatmapColor(day.count)"
+              [attr.title]="day.date ? day.date + ': ' + day.count + ' submissions' : ''">
+            {{ day.date ? day.date.split('-')[2] : '' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

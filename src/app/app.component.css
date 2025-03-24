@@ -2,8 +2,6 @@
 .app-container {
   display: flex;
   height: 100vh; /* Full viewport height */
-  margin: 0;
-  padding: 0;
   overflow: hidden;
 }
 
@@ -43,4 +41,23 @@ app-sidebar::-webkit-scrollbar-thumb:hover {
 /* Smooth transitions */
 app-sidebar, .editor {
   transition: all 0.3s ease-in-out;
+}
+
+/* Responsive Sidebar */
+@media (max-width: 768px) {
+  app-sidebar {
+    width: 200px; /* Reduce width on smaller screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .app-container {
+    flex-direction: column; /* Stack sidebar on top */
+  }
+  app-sidebar {
+    width: 100%; /* Make sidebar full-width */
+    height: auto; /* Adjust height */
+    border-right: none;
+    border-bottom: 1px solid #333; /* Separate from editor */
+  }
 }

@@ -12,23 +12,43 @@ import { ILeetCodeStatus } from '../../model/interface/ILeetcode';
 })
 export class LeetcodeComponent implements OnInit {
   leetcodeData: ILeetCodeStatus | undefined;
+  userProfile: any = {}; 
   isLoading: boolean = true;
-  lastYearSubmissions: { date: string; count: number }[] = [];
-  weeks: { date: string; count: number }[][] = [];
-  monthLabels: { name: string; position: number }[] = [];
+  monthlyData: Map<string, { date: string; count: number }[]> = new Map();
 
   constructor(private leetcodeService: LeetcodeService) {}
+
 
   ngOnInit() {
     this.fetchLeetcodeData();
   }
-
+  
   fetchLeetcodeData() {
     this.leetcodeService.getUserData().subscribe({
       next: (data) => {
         this.leetcodeData = data;
         this.processSubmissionData();
         this.isLoading = false;
+  
+        //calculate progress percentages
+        this.userProfile = {
+          username: data.username,
+          globalRank: data.ranking || 'N/A',
+          easySolved: data.easySolved || 0,
+          mediumSolved: data.mediumSolved || 0,
+          hardSolved: data.hardSolved || 0,
+          totalEasy: data.totalEasy || 1,
+          totalMedium: data.totalMedium || 1,
+          totalHard: data.totalHard || 1,
+          reputation: data.reputation || 0,
+          contributionPoints: data.contributionPoints || 0,
+          profileUrl: `https://leetcode.com/${data.username}`,
+        };
+        
+        //calculate completion percentages
+        this.userProfile.easyPercentage = (this.userProfile.easySolved / this.userProfile.totalEasy) * 100;
+        this.userProfile.mediumPercentage = (this.userProfile.mediumSolved / this.userProfile.totalMedium) * 100;
+        this.userProfile.hardPercentage = (this.userProfile.hardSolved / this.userProfile.totalHard) * 100;
       },
       error: (err) => {
         console.error('Error fetching LeetCode data', err);
@@ -36,107 +56,80 @@ export class LeetcodeComponent implements OnInit {
       }
     });
   }
+  
 
   processSubmissionData() {
     if (!this.leetcodeData || !this.leetcodeData.submissionCalendar) return;
-  
+
     const submissionCalendar = this.leetcodeData.submissionCalendar;
     const today = new Date();
     const oneYearAgo = new Date();
     oneYearAgo.setFullYear(today.getFullYear() - 1);
-  
-    this.lastYearSubmissions = [];
-  
-    // Step 1: Convert API data (UNIX timestamp -> Date)
+    oneYearAgo.setDate(oneYearAgo.getDate() + 1);
+
+    const submissionMap = new Map<string, number>();
+
+    //convert API data (UNIX timestamp -> Date)
     for (const [timestamp, count] of Object.entries(submissionCalendar)) {
-      const date = new Date(Number(timestamp) * 1000); // Convert UNIX timestamp (s) to JS Date (ms)
-      if (date >= oneYearAgo && date <= today) {
-        this.lastYearSubmissions.push({
-          date: date.toISOString().split('T')[0], // Format: YYYY-MM-DD
-          count: Number(count)
-        });
+      const date = new Date(Number(timestamp) * 1000).toISOString().split('T')[0];
+      submissionMap.set(date, Number(count));
+    }
+
+    this.monthlyData.clear();
+
+    for (let d = new Date(oneYearAgo); d <= today; d.setDate(d.getDate() + 1)) {
+      const dateString = d.toISOString().split('T')[0];
+      const count = submissionMap.get(dateString) || 0;
+      const monthKey = `${d.getFullYear()}-${d.getMonth()}`; // Format: "2024-2"
+
+      if (!this.monthlyData.has(monthKey)) {
+        this.monthlyData.set(monthKey, []);
       }
+      this.monthlyData.get(monthKey)!.push({ date: dateString, count });
     }
-  
-    // Step 2: Fill missing days with 0 submissions
-    const filledData = new Map<string, number>();
-  
-    for (let i = 0; i < 365; i++) {
-      const date = new Date(today);
-      date.setDate(today.getDate() - i);
-      const dateString = date.toISOString().split('T')[0];
-  
-      filledData.set(dateString, this.lastYearSubmissions.find(d => d.date === dateString)?.count || 0);
-    }
-  
-    this.lastYearSubmissions = Array.from(filledData.entries()).map(([date, count]) => ({
-      date,
-      count
-    })).reverse(); // Reverse to maintain chronological order
-  
-    // Step 3: Organize into weeks
-    this.weeks = [];
-    let currentWeek: { date: string; count: number }[] = [];
-    
-    for (let i = 0; i < this.lastYearSubmissions.length; i++) {
-      const entry = this.lastYearSubmissions[i];
+  }
+
+  getMonthView(monthKey: string): { date: string; count: number }[][] {
+    const days = this.monthlyData.get(monthKey) || [];
+    if (days.length === 0) return [];
+
+    const firstDayOfMonth = new Date(days[0].date);
+    const startDay = firstDayOfMonth.getDay(); // 0 = Sunday, 6 = Saturday
+
+    let weeks: { date: string; count: number }[][] = [];
+    let currentWeek: { date: string; count: number }[] = Array(startDay).fill({ date: '', count: 0 });
+
+    for (const entry of days) {
       currentWeek.push(entry);
-      
-      if (currentWeek.length === 7 || i === this.lastYearSubmissions.length - 1) {
-        this.weeks.push(currentWeek);
+      if (currentWeek.length === 7) {
+        weeks.push(currentWeek);
         currentWeek = [];
       }
     }
-  
-    // Step 4: Generate month labels with better alignment
-    this.monthLabels = [];
-    let lastMonth = '';
-  
-    for (let weekIndex = 0; weekIndex < this.weeks.length; weekIndex++) {
-      const firstDayOfWeek = new Date(this.weeks[weekIndex][0].date);
-      const monthName = firstDayOfWeek.toLocaleString('default', { month: 'short' });
-  
-      if (monthName !== lastMonth) {
-        this.monthLabels.push({
-          name: monthName,
-          position: weekIndex
-        });
-        lastMonth = monthName;
+
+    // Fill last week if needed
+    if (currentWeek.length) {
+      while (currentWeek.length < 7) {
+        currentWeek.push({ date: '', count: 0 });
       }
+      weeks.push(currentWeek);
     }
+
+    return weeks;
   }
-  
-  
+
+  getMonthName(monthKey: string): string {
+    const [year, month] = monthKey.split('-').map(Number);
+    return new Date(year, month).toLocaleString('default', { month: 'long', year: 'numeric' });
+  }
 
   getHeatmapColor(count: number): string {
-    if (count === 0) return '#525452'; // Gray for 0
-  
-    // Generate a shade of green from dark to light based on count (1 to 10)
+    if (count === 0) return '#525452';
+
     const greenShades = [
-      '#064e1f', // 1 - Darkest green
-      '#0a6b2b', // 2
-      '#0e8837', // 3
-      '#12a543', // 4
-      '#16c14f', // 5
-      '#3edc6f', // 6
-      '#64e389', // 7
-      '#8aec9e', // 8
-      '#b1f3b5', // 9
-      '#d7fad0'  // 10 - Lightest green
+      '#064e1f', '#0a6b2b', '#0e8837', '#12a543', '#16c14f',
+      '#3edc6f', '#64e389', '#8aec9e', '#b1f3b5', '#d7fad0'
     ];
-  
-    return greenShades[Math.min(count, 10) - 1]; // Ensure count stays within bounds
+    return greenShades[Math.min(count, 10) - 1];
   }
-  
-  isMonthChange(weekIndex: number): boolean {
-    if (weekIndex === 0) return false;
-    const prevWeek = this.weeks[weekIndex - 1];
-    const currentWeek = this.weeks[weekIndex];
-  
-    const prevMonth = new Date(prevWeek[0].date).getMonth();
-    const currentMonth = new Date(currentWeek[0].date).getMonth();
-  
-    return prevMonth !== currentMonth;
-  }
-  
 }
