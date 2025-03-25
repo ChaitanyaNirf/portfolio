@@ -1,10 +1,12 @@
 .content {
-  flex-grow: 10;
+  flex-grow: 1;
   padding: 15px;
   background: #1e1e1e;
   color: #d4d4d4;
   overflow-y: auto;  /* Enables vertical scrolling */
   max-height: calc(100vh - 50px); /* Adjust based on layout */
+  max-width: calc(100vw - 250px); /* Prevents it from overlapping sidebar */
+  min-width: 400px; /* Ensures it doesn't shrink too much */
 }
 
 /* Hide scrollbar for WebKit-based browsers (Chrome, Safari, Edge) */
