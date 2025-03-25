@@ -1,7 +1,7 @@
 .tabs {
-  background: #252526;
-  padding: 5px 10px;
-  border-bottom: 1px solid #333;
+  background: #181825; /* Darker VS Code-like background */
+  padding: 6px 12px;
+  border-bottom: 1px solid #313244; /* Softer separator */
   display: flex;
   align-items: center;
 }
@@ -11,38 +11,39 @@
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  background: #1e1e1e;
-  border: 1px solid #333;
+  background: #1e1e2e; /* Softer tab color */
+  border: 1px solid #313244; /* Subtle border */
   border-bottom: none;
   margin-right: 5px;
   cursor: pointer;
-  color: #ccc;
+  color: #a9b1d6; /* VS Code text color */
   font-size: 14px;
   border-radius: 5px 5px 0 0;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
 }
 
 .tabs span:hover {
-  background: #2d2d2d;
-  color: #fff;
+  background: #2d2f41;
+  color: #c0caf5;
 }
 
 .tabs span.active {
-  background: #007acc;
-  color: white;
-  border-color: #007acc;
-  box-shadow: 0px -2px 5px rgba(0, 122, 204, 0.5);
+  background: #1e1e2e;; /* Brighter cyan highlight */
+  color: #b7b7cf;
+  border-color: #aaf450;
+  box-shadow: 0px -2px 10px rgba(137, 220, 235, 0.6); /* Soft glow effect */
 }
+
 
 .tabs span button {
   background: none;
   border: none;
-  color: #888;
+  color: #7f849c; /* Softer inactive color */
   font-size: 14px;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 .tabs span button:hover {
-  color: #fff;
+  color: #c0caf5; /* Lighter hover effect */
 }

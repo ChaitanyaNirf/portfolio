@@ -4,7 +4,7 @@ html, body {
     padding: 0;
     width: 100%;
     height: 100%;
-    background-color: #1e1e1e; /* VS Code dark theme */
+    background-color: #181825;; /* VS Code dark theme */
     overflow-x: hidden; /* Prevents unwanted horizontal scroll */
   }
   
