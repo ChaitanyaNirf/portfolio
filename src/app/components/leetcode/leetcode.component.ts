@@ -77,11 +77,12 @@ export class LeetcodeComponent implements OnInit {
 
     this.monthlyData.clear();
 
-    for (let d = new Date(oneYearAgo); d <= today; d.setDate(d.getDate() + 1)) {
+    for (let d = new Date(oneYearAgo); d <= today; d = new Date(d.getTime() + 86400000)) {
       const dateString = d.toISOString().split('T')[0];
       const count = submissionMap.get(dateString) || 0;
-      const monthKey = `${d.getFullYear()}-${d.getMonth()}`; // Format: "2024-2"
-
+      // Subtract 1 day because for the value of d is incrementing even before the iteration ends 
+      let temp = new Date(d.getTime() - 86400000); 
+      const monthKey = `${temp.getFullYear()}-${temp.getMonth()}`; 
       if (!this.monthlyData.has(monthKey)) {
         this.monthlyData.set(monthKey, []);
       }
