@@ -4,8 +4,14 @@
   </ng-container>
 
   <ng-template #checkLeetcode>
-    <ng-container *ngIf="activeTab.toLowerCase() === 'leetcode'; else defaultContent">
+    <ng-container *ngIf="activeTab.toLowerCase() === 'leetcode'; else checkSkills">
       <app-leetcode></app-leetcode>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #checkSkills>
+    <ng-container *ngIf="activeTab.toLowerCase() === 'skills'; else defaultContent">
+      <app-skills></app-skills>
     </ng-container>
   </ng-template>
 
