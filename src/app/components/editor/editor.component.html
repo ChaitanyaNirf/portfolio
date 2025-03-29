@@ -10,8 +10,14 @@
   </ng-template>
 
   <ng-template #checkSkills>
-    <ng-container *ngIf="activeTab.toLowerCase() === 'skills'; else defaultContent">
+    <ng-container *ngIf="activeTab.toLowerCase() === 'skills'; else checkGithub">
       <app-skills></app-skills>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #checkGithub>
+    <ng-container *ngIf="activeTab.toLowerCase() === 'github'; else defaultContent">
+      <app-github></app-github>
     </ng-container>
   </ng-template>
 

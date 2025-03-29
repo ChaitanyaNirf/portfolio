@@ -4,10 +4,11 @@ import { ResumeComponent } from '../resume/resume.component';
 import { CommonModule } from '@angular/common';
 import { LeetcodeComponent } from '../leetcode/leetcode.component';
 import { SkillsComponent } from '../skills/skills.component';
+import { GithubComponent } from "../github/github.component";
 
 @Component({
   selector: 'app-editor',
-  imports: [ResumeComponent, CommonModule, LeetcodeComponent, SkillsComponent],
+  imports: [ResumeComponent, CommonModule, LeetcodeComponent, SkillsComponent, GithubComponent],
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css']
 })
