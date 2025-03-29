@@ -73,6 +73,7 @@ export class AppComponent {
     `,
     'resume': `Handled by the resume component`,
     'leetcode': `Handled by the leetcode component`,
+    'skills' : `Handled by the skills component`,
     'none' : `<p>Nothing to see 🤷‍♂️</p>`
   };
   
