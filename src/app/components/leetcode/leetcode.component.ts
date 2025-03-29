@@ -133,4 +133,17 @@ export class LeetcodeComponent implements OnInit {
     ];
     return greenShades[Math.min(count, 10) - 1];
   }
+  
+getTotalSolved(): number {
+  return this.userProfile.easySolved + this.userProfile.mediumSolved + this.userProfile.hardSolved;
+}
+
+getTotalProblems(): number {
+  return this.userProfile.totalEasy + this.userProfile.totalMedium + this.userProfile.totalHard;
+}
+
+getCircularGradient(percentage: number, color: string): string {
+  return `conic-gradient(${color} ${percentage}%, transparent ${percentage}%)`;
+}
+
 }

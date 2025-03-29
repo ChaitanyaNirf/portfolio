@@ -72,6 +72,7 @@ export class AppComponent {
       <p><strong>GitHub:</strong> <a href="https://github.com/ChaitanyaNirf" target="_blank">github.com/ChaitanyaNirf</a></p>
     `,
     'resume': `Handled by the resume component`,
+    'github': `Handled by the github component`,
     'leetcode': `Handled by the leetcode component`,
     'skills' : `Handled by the skills component`,
     'none' : `<p>Nothing to see 🤷‍♂️</p>`

@@ -8,7 +8,8 @@ import { Constants } from '../../constants/Constants';
   providedIn: 'root'
 })
 export class LeetcodeService {
-  private apiUrl = 'https://leetcode-stats-api.herokuapp.com/';
+  // private apiUrl = 'https://leetcode-stats-api.herokuapp.com/';
+  private apiUrl = 'http://localhost:3000/leetcode-data?username=';
 
   constructor(private http: HttpClient) {}
 

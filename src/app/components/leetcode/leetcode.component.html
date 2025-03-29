@@ -1,54 +1,36 @@
-<div *ngIf="isLoading" class="loading">
-  Loading LeetCode data...
-</div>
-
-<div *ngIf="!isLoading && monthlyData.size === 0" class="no-data">
-  No submission data available.
-</div>
-
-<div class="user-profile">
+<div *ngIf="!isLoading && monthlyData.size > 0" class="user-profile">
   <h2>{{ userProfile.username }}</h2>
 
-  <!-- Global Rank -->
   <p class="global-rank">🌍 Global Rank: <strong>{{ userProfile.globalRank }}</strong></p>
 
-  <!-- Problems Solved Section -->
   <div class="stats">
     <p><strong>Problems Solved</strong></p>
 
-    <div class="stat-item">
-      <span>Easy</span>
-      <div class="progress-bar easy">
-        <div [style.width.%]="userProfile.easyPercentage"></div>
+    <div class="circular-progress-container">
+      <div class="circular-progress">
+        <div class="circle easy-circle" [style.background]="getCircularGradient(userProfile.easyPercentage, '#66bb6a')"></div>
+        <div class="circle medium-circle" [style.background]="getCircularGradient(userProfile.mediumPercentage, '#ffa726')"></div>
+        <div class="circle hard-circle" [style.background]="getCircularGradient(userProfile.hardPercentage, '#ef5350')"></div>
+        <div class="center-text">
+          {{ getTotalSolved() }}/{{ getTotalProblems() }}
+          <br>
+          <span class="solved-text">Solved</span>
+        </div>
       </div>
-      <span class="badge easy">{{ userProfile.easySolved }}/{{ userProfile.totalEasy }}</span>
-    </div>
-
-    <div class="stat-item">
-      <span>Medium</span>
-      <div class="progress-bar medium">
-        <div [style.width.%]="userProfile.mediumPercentage"></div>
+      <div class="difficulty-stats">
+        <div class="difficulty-item easy">Easy: {{ userProfile.easySolved }}/{{ userProfile.totalEasy }}</div>
+        <div class="difficulty-item medium">Med: {{ userProfile.mediumSolved }}/{{ userProfile.totalMedium }}</div>
+        <div class="difficulty-item hard">Hard: {{ userProfile.hardSolved }}/{{ userProfile.totalHard }}</div>
       </div>
-      <span class="badge medium">{{ userProfile.mediumSolved }}/{{ userProfile.totalMedium }}</span>
-    </div>
-
-    <div class="stat-item">
-      <span>Hard</span>
-      <div class="progress-bar hard">
-        <div [style.width.%]="userProfile.hardPercentage"></div>
-      </div>
-      <span class="badge hard">{{ userProfile.hardSolved }}/{{ userProfile.totalHard }}</span>
     </div>
   </div>
 
-  <!-- Reputation & Contribution -->
   <div class="reputation">
-    ⭐ Reputation: <strong>{{ userProfile.reputation }}</strong> | 🎖️ Contribution: <strong>{{ userProfile.contributionPoints }}</strong>
+    ⭐Reputation: <strong>{{ userProfile.reputation }}</strong> | 🎖️Contribution: <strong>{{ userProfile.contributionPoints }}</strong>
   </div>
 
-  <!-- LeetCode Profile Link -->
   <a class="leetcode-link" [href]="userProfile.profileUrl" target="_blank">
-    🔗 View Profile
+    View LeetCode Profile
   </a>
 </div>
 
