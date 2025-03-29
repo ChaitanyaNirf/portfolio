@@ -1,115 +1,94 @@
-/* User Profile Section (Circular Progress) */
-.user-profile {
-  background: #17122d; /* Dark blue/gray gradient */
-  padding: 30px;
-  border-radius: 12px;
-  text-align: center;
-  color: #dcdde1; /* Lighter text */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+.leetcode-container {
+  font-family: Arial, sans-serif;
+  max-width: 100%;
+  margin: auto;
+  padding: 20px;
+  color: #c9d1d9;
+  padding-bottom: 10px;
 }
 
-/* Global Rank */
-.global-rank {
-  font-size: 1.3rem;
-  margin-bottom: 15px;
-  color: #81ecec; /* Cyan-like color */
+/* Profile Section */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.leetcode-username {
+  font-size: 22px;
+  font-weight: bold;
+  color: #58a6ff;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.leetcode-username span {
+  color: #58a6ff;
+}
+
+.leetcode-username:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin: 0;
+  font-size: 18px;
 }
 
 /* Stats Section */
 .stats {
-  margin: 30px 0;
-}
-
-.circular-progress-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.circular-progress {
-  position: relative;
-  width: 180px;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid #555; /* Added a border to the whole circle */
-  border-radius: 50%;
-}
-
-.circle {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  position: absolute;
-  transition: transform 0.3s ease;
-}
-
-.easy-circle { transform: rotate(-90deg); }
-.medium-circle { transform: rotate(-90deg); }
-.hard-circle { transform: rotate(-90deg); }
-
-.center-text {
-  position: absolute;
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  border-radius: 50%;
-  background-color: transparent; /* Removed transparent background */
-  box-shadow: none; /* Removed box shadow */
-  font-family: 'Roboto', sans-serif;
-}
-
-.center-text span {
-  font-size: 0.9rem;
-  color: #a4b0be;
-}
-
-.difficulty-stats {
-  display: flex;
-  flex-direction: column;
-  margin-left: 30px;
-}
-
-.difficulty-item {
-  margin-bottom: 8px;
-  font-size: 1rem;
-  padding: 8px 15px;
-  border-radius: 8px;
-  color: white;
-}
-
-.easy { background-color: #66bb6a; }
-.medium { background-color: #ffa726; }
-.hard { background-color: #ef5350; }
-
-/* Reputation */
-.reputation {
-  font-size: 1.1rem;
   margin-top: 20px;
 }
 
-/* LeetCode Profile Button */
-.leetcode-link {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 12px 25px;
-  background: linear-gradient(135deg, #42a5f5, #1e88e5); /* Blue gradient */
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(66, 165, 245, 0.4);
+
+.difficulty-stats {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
 }
 
-.leetcode-link:hover {
-  background: linear-gradient(135deg, #1e88e5, #1565c0);
-  box-shadow: 0 5px 15px rgba(66, 165, 245, 0.5);
+.difficulty-item {
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
 }
+
+.difficulty-label {
+  font-size: 14px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.difficulty-count {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.difficulty-item.easy {
+  color: #66bb6a;
+}
+
+.difficulty-item.medium {
+  color: #ffa726;
+}
+
+.difficulty-item.hard {
+  color: #ef5350;
+}
+
+/* Reputation Section */
+.reputation {
+  font-size: 16px;
+  margin-top: 15px;
+}
+
 /* Heatmap */
 .heatmap-container {
   display: flex;
@@ -123,13 +102,13 @@
 
 /* Month Section */
 .month-section {
-  background: #20232a; /* Darker slate */
+  background: #161b2231; /* Darker slate */
   padding: 10px;
   border-radius: 8px;
   width: calc(25% - 15px);
-  min-width: 180px;
+  min-width: 150px;
   max-width: 250px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(98, 95, 95, 0.2);
   text-align: center;
   transition: all 0.2s ease-in-out;
   padding-bottom: 20px;
@@ -146,7 +125,7 @@
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
 }
 
 .heatmap th, 
@@ -167,57 +146,6 @@
   background: #1f4068; /* Dark blue */
   cursor: pointer;
   box-shadow: 0px 0px 6px rgba(100, 200, 255, 0.6);
-}
-
-/* Active Tab Styling */
-.tabs {
-  background: #20232a;
-  padding: 5px 10px;
-  border-bottom: 1px solid #333;
-  display: flex;
-  align-items: center;
-}
-
-.tabs span {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: #181a1f;
-  border: 1px solid #2c313a;
-  border-bottom: none;
-  margin-right: 5px;
-  cursor: pointer;
-  color: #ccc;
-  font-size: 14px;
-  border-radius: 5px 5px 0 0;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.tabs span:hover {
-  background: #283140;
-  color: #9cdcfe;
-}
-
-.tabs span.active {
-  background: #007acc;
-  color: white;
-  border-color: #007acc;
-  box-shadow: 0px -2px 8px rgba(36, 153, 255, 0.6);
-}
-
-/* Close Button */
-.tabs span button {
-  background: none;
-  border: none;
-  color: #888;
-  font-size: 14px;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-.tabs span button:hover {
-  color: #fff;
 }
 
 /* RESPONSIVENESS */
