@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class GithubService {
-  private apiUrl = 'http://localhost:3000/github-data';
+  private apiUrl = 'https://portfolio-backend-eight-hazel.vercel.app/github-data';
 
   constructor(private http: HttpClient) {}
 

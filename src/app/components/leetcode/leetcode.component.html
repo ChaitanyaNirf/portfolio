@@ -1,37 +1,39 @@
-<div *ngIf="!isLoading && monthlyData.size > 0" class="user-profile">
-  <h2>{{ userProfile.username }}</h2>
+<div *ngIf="!isLoading && monthlyData.size > 0" class="leetcode-container">
+  <!-- Profile Section -->
+  <div class="profile">
+    <div class="profile-info">
+      <!-- Hardcoded Username and Profile Link -->
+      <a class="leetcode-username" href="https://leetcode.com/ChaitanyaNirf" target="_blank">
+        <span>ChaitanyaNirf</span>
+      </a>
+      <p>Global Rank: 🌍 <strong>{{ userProfile?.globalRank }}</strong></p>
+    </div>
+  </div>
 
-  <p class="global-rank">🌍 Global Rank: <strong>{{ userProfile.globalRank }}</strong></p>
-
+  <!-- Problem Solved Stats -->
   <div class="stats">
     <p><strong>Problems Solved</strong></p>
-
-    <div class="circular-progress-container">
-      <div class="circular-progress">
-        <div class="circle easy-circle" [style.background]="getCircularGradient(userProfile.easyPercentage, '#66bb6a')"></div>
-        <div class="circle medium-circle" [style.background]="getCircularGradient(userProfile.mediumPercentage, '#ffa726')"></div>
-        <div class="circle hard-circle" [style.background]="getCircularGradient(userProfile.hardPercentage, '#ef5350')"></div>
-        <div class="center-text">
-          {{ getTotalSolved() }}/{{ getTotalProblems() }}
-          <br>
-          <span class="solved-text">Solved</span>
-        </div>
+    <div class="difficulty-stats">
+      <div class="difficulty-item easy">
+        <span class="difficulty-label">Easy</span>
+        <span class="difficulty-count">{{ userProfile?.easySolved }}</span>
       </div>
-      <div class="difficulty-stats">
-        <div class="difficulty-item easy">Easy: {{ userProfile.easySolved }}/{{ userProfile.totalEasy }}</div>
-        <div class="difficulty-item medium">Med: {{ userProfile.mediumSolved }}/{{ userProfile.totalMedium }}</div>
-        <div class="difficulty-item hard">Hard: {{ userProfile.hardSolved }}/{{ userProfile.totalHard }}</div>
+      <div class="difficulty-item medium">
+        <span class="difficulty-label">Medium</span>
+        <span class="difficulty-count">{{ userProfile?.mediumSolved }}</span>
+      </div>
+      <div class="difficulty-item hard">
+        <span class="difficulty-label">Hard</span>
+        <span class="difficulty-count">{{ userProfile?.hardSolved }}</span>
       </div>
     </div>
   </div>
 
+  <!-- Reputation and Contribution -->
   <div class="reputation">
-    ⭐Reputation: <strong>{{ userProfile.reputation }}</strong> | 🎖️Contribution: <strong>{{ userProfile.contributionPoints }}</strong>
+    ⭐ Reputation: <strong>{{ userProfile?.reputation }}</strong> | 🎖️ Contribution: <strong>{{ userProfile?.contributionPoints }}</strong>
   </div>
-
-  <a class="leetcode-link" [href]="userProfile.profileUrl" target="_blank">
-    View LeetCode Profile
-  </a>
+  <h3 class="stats"><strong>Submissions Calendar</strong></h3>
 </div>
 
 <div *ngIf="!isLoading" class="heatmap-container">
