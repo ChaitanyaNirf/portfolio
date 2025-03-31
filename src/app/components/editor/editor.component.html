@@ -16,8 +16,38 @@
   </ng-template>
 
   <ng-template #checkGithub>
-    <ng-container *ngIf="activeTab.toLowerCase() === 'github'; else defaultContent">
+    <ng-container *ngIf="activeTab.toLowerCase() === 'github'; else checkWelcome">
       <app-github></app-github>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #checkWelcome>
+    <ng-container *ngIf="activeTab.toLowerCase() === 'welcome'; else checkExperience">
+      <app-welcome></app-welcome>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #checkExperience>
+    <ng-container *ngIf="activeTab.toLowerCase() === 'experience'; else checkPublication">
+      <app-experience></app-experience>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #checkPublication>
+    <ng-container *ngIf="activeTab.toLowerCase() === 'publications'; else checkProjects">
+      <app-publications></app-publications>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #checkProjects>
+    <ng-container *ngIf="activeTab.toLowerCase() === 'projects'; else checkContact">
+      <app-projects></app-projects>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #checkContact>
+    <ng-container *ngIf="activeTab.toLowerCase() === 'contact'; else defaultContent">
+      <app-contact></app-contact>
     </ng-container>
   </ng-template>
 

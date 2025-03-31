@@ -1,0 +1,64 @@
+.contact-container {
+    max-width: 600px;
+    margin: 0;
+    padding: 20px;
+    text-align: left; /* Left-align everything */
+  }
+  
+  .intro {
+    color: #2B67AD;
+    font-size: 20px;
+    margin-bottom: 12px;
+    font: bolder;
+  }
+  
+  .json-box {
+    background-color: #060b0f4a;
+    /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 5px;
+    font-family: 'Fira Code', monospace;
+    font-size: 1.1em;
+    color: #dcdcdc;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+    max-width: 100%;
+    white-space: pre-wrap;
+    padding: 30px;
+}
+  
+  .key {
+    color: #569CD6;
+  }
+  
+  .value {
+    color: #CE9178;
+    cursor: pointer;
+  }
+  
+  .value:hover {
+    text-decoration: underline;
+  }
+  
+  .link a {
+    color: #CE9178;
+    text-decoration: none;
+  }
+  
+  .link a:hover {
+    text-decoration: underline;
+  }
+  
+  .brace {
+    color: #D4D4D4;
+  }
+  
+  .cursor {
+    color: #ffffff;
+    animation: blink 1s infinite;
+  }
+  
+  
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+  

@@ -1,0 +1,103 @@
+.welcome-container {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #dcdcdc;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+/* Left Section */
+.left-section {
+    flex: 1;
+}
+
+.welcome-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.cursor {
+    color: #2B67AD;
+    font-weight: bold;
+    animation: blink 0.8s infinite;
+}
+
+.name-title {
+    font-size: 4em;
+    color: #dcdcdc;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.surname-title {
+    color: #2B67AD;
+    /* Blue color */
+    font-weight: bold;
+}
+
+
+
+.profession {
+    font-size: 1.5em;
+    color: #8A8A8A;
+    margin-top: -10px;
+    margin-left: 10px;
+}
+
+.code-block {
+    background-color: #060b0f4a;
+    /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 5px;
+    font-family: 'Fira Code', monospace;
+    font-size: 1.1em;
+    color: #dcdcdc;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+    max-width: 90%;
+    white-space: pre-wrap;
+}
+
+.comment {
+    color: #6A9955;
+    font-style: italic;
+}
+
+.key {
+    color: #569CD6;
+    font-weight: bold;
+}
+
+.variable {
+    color: #c6bb4b;
+}
+
+.function {
+    color: #DCDCAA;
+}
+
+.string {
+    color: #CE9178;
+}
+
+/* Right Section */
+.right-section {
+    flex: 1.2;
+    text-align: left;
+}
+
+
+/* Typing animation */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
