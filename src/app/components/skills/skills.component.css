@@ -1,106 +1,112 @@
 .skills-container {
-    padding: 20px;
-    color: #cdd6f4;
-  }
-  
-  .skills-container h2 {
-    margin-bottom: 15px;
-    color: #89b4fa;
-    text-align: center;
-    font-size: 24px;
-  }
-  
-  /* Grid layout for skills */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 16px;
-    justify-content: center;
-  }
-  
-  /* Card styling */
-  .skill-card {
-    width: 120px;
-    height: 120px;
-    perspective: 1000px;
-    cursor: pointer;
-  }
-  
-  .skill-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.5s;
-  }
-  
-  /* Front and Back */
-  .skill-front,
-  .skill-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  
-  /* Front side */
-  .skill-front {
-    background: #1e1e2e;
-    border: 1px solid #313244;
-    color: #cdd6f4;
-    flex-direction: column;
-  }
-  
-  .skill-front i {
-    font-size: 30px;
-    margin-bottom: 5px;
-    color: #facc15;
-  }
-  
-  /* Back side */
-  .skill-back {
-    background: #313244;
-    border: 1px solid #414558;
-    color: #89b4fa;
-    transform: rotateY(180deg);
-  }
-  
-  /* Hover effect - flip animation */
-  .skill-card:hover .skill-inner {
-    transform: rotateY(180deg);
-  }
-  
-  .skills-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    font-weight: bold;
-    color: #cdd6f4; /* Soft white */
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    padding: 10px;
-    border-bottom: 2px solid #585b70; /* Subtle border */
-    position: relative;
-    margin-bottom: 20px; /* Adds spacing below the header */
-  }
-  
-  .skills-header i {
-    margin-right: 10px;
-    color: #89b4fa; /* Light blue */
-    font-size: 24px;
-  }
-  
-  /* Cool glowing effect on hover */
-  .skills-header:hover {
-    text-shadow: 0 0 8px rgba(137, 180, 250, 0.8);
-    border-bottom: 2px solid #89b4fa;
-    transition: all 0.3s ease-in-out;
-  }
-  
+  padding: 20px;
+  color: #c9d1d9; /* Soft VS Code text color */
+}
+
+.skills-container h2 {
+  margin-bottom: 15px;
+  color: #58a6ff; /* GitHub/VS Code Blue */
+  text-align: center;
+  font-size: 24px;
+}
+
+/* Grid layout for skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Card styling */
+.skill-card {
+  width: 120px;
+  height: 120px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.skill-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+/* Front and Back */
+.skill-front,
+.skill-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Front side */
+.skill-front {
+  background: #353b41; /* VS Code Sidebar Color */
+  border: 1px solid #30363D; /* Subtle VS Code Border */
+  color: #c9d1d9;
+  flex-direction: column;
+}
+
+.skill-front i {
+  font-size: 30px;
+  margin-bottom: 5px;
+  color: #58A6FF; /* Yellow for contrast */
+}
+
+/* Back side */
+.skill-back {
+  background: #1F2428; /* VS Code Editor Background */
+  border: 1px solid #30363D;
+  color: #58a6ff; /* VS Code Blue */
+  transform: rotateY(180deg);
+}
+
+/* Hover effect - flip animation */
+.skill-card:hover .skill-inner {
+  transform: rotateY(180deg);
+}
+
+.skills-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #c9d1d9;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 10px;
+  border-bottom: 2px solid #30363D;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.skills-header i {
+  margin-right: 10px;
+  color: #2B67AD;
+  font-size: 24px;
+}
+
+/* Cool glowing effect on hover */
+.skills-header:hover {
+  text-shadow: 0 0 8px rgba(88, 166, 255, 0.8);
+  border-bottom: 2px solid #58a6ff;
+  transition: all 0.3s ease-in-out;
+}
+
+.skill-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 5px;
+}
+

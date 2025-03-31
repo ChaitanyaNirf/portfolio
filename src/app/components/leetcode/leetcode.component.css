@@ -3,7 +3,7 @@
   max-width: 100%;
   margin: auto;
   padding: 20px;
-  color: #c9d1d9;
+  color: #D4D4D4; /* Softer text color */
   padding-bottom: 10px;
 }
 
@@ -22,14 +22,14 @@
 .leetcode-username {
   font-size: 22px;
   font-weight: bold;
-  color: #58a6ff;
+  color: #58A6FF; /* VS Code Blue */
   text-decoration: none;
   display: block;
   margin-bottom: 10px;
 }
 
 .leetcode-username span {
-  color: #58a6ff;
+  color: #58A6FF;
 }
 
 .leetcode-username:hover {
@@ -45,7 +45,6 @@ p {
 .stats {
   margin-top: 20px;
 }
-
 
 .difficulty-stats {
   display: flex;
@@ -72,15 +71,15 @@ p {
 }
 
 .difficulty-item.easy {
-  color: #66bb6a;
+  color: #66BB6A;
 }
 
 .difficulty-item.medium {
-  color: #ffa726;
+  color: #FFA726;
 }
 
 .difficulty-item.hard {
-  color: #ef5350;
+  color: #EF5350;
 }
 
 /* Reputation Section */
@@ -97,17 +96,17 @@ p {
   gap: 10px;
   padding: 10px;
   max-width: 100%;
-  padding-bottom:  50px;
+  padding-bottom: 120px;
 }
 
 /* Month Section */
 .month-section {
-  background: #161b2231; /* Darker slate */
+  background: #24292E; /* Darker VS Code Theme */
   padding: 10px;
   border-radius: 8px;
   width: calc(25% - 15px);
-  min-width: 150px;
-  max-width: 250px;
+  min-width: 120px;
+  max-width: 240px;
   box-shadow: 0 4px 6px rgba(98, 95, 95, 0.2);
   text-align: center;
   transition: all 0.2s ease-in-out;
@@ -116,7 +115,7 @@ p {
 
 .month-section h3 {
   font-size: 1.1rem;
-  color: #9cdcfe;
+  color: #9CDCFE; /* Soft Blue */
   margin-bottom: 5px;
 }
 
@@ -136,14 +135,14 @@ p {
 }
 
 .heatmap td {
-  border: 1px solid #2c313a;
+  border: 1px solid #30363D; /* Subtle border */
   width: 14%;
   transition: all 0.2s ease-in-out;
 }
 
 /* Neon Hover Effect */
 .heatmap td:hover {
-  background: #1f4068; /* Dark blue */
+  background: #1F4068; /* Dark Blue */
   cursor: pointer;
   box-shadow: 0px 0px 6px rgba(100, 200, 255, 0.6);
 }

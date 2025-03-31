@@ -1,33 +1,33 @@
 .content {
   flex-grow: 1;
   padding: 15px;
-  background: #181825; /* Darker editor background */
-  color: #cdd6f4; /* Soft pastel white */
-  overflow-y: auto;  /* Enables vertical scrolling */
-  max-height: calc(100vh - 50px); /* Adjust based on layout */
-  min-width: 400px; /* Ensures it doesn't shrink too much */
+  background: #1F2428; /* Primary background */
+  color: #D4D4D4; /* Default text color */
+  overflow-y: auto;
+  max-height: calc(100vh - 50px);
+  min-width: 400px;
 }
 
-/* Hide scrollbar for WebKit-based browsers (Chrome, Safari, Edge) */
+/* Scrollbars */
 .content::-webkit-scrollbar {
-  width: 6px; /* Make scrollbar thin */
+  width: 6px;
 }
 
 .content::-webkit-scrollbar-track {
-  background: #313244; /* Blends with background */
+  background: #24292E;
 }
 
 .content::-webkit-scrollbar-thumb {
-  background: #45475a; /* Subtle scrollbar */
+  background: #3C3C3C;
   border-radius: 10px;
 }
 
 .content::-webkit-scrollbar-thumb:hover {
-  background: #585b70; /* Slightly visible on hover */
+  background: #5A5A5A;
 }
 
 /* Firefox scrollbar */
 .content {
   scrollbar-width: thin;
-  scrollbar-color: #45475a #313244;
+  scrollbar-color: #3C3C3C #24292E;
 }

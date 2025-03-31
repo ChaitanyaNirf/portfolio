@@ -1,51 +1,115 @@
+.sidebar-container {
+  display: flex;
+  height: 100vh;
+}
+
+.activity-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  background-color: #24292E; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+  border-right: 1px solid #3C3C3C;
+}
+
+.activity-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #D4D4D4;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.activity-icon:hover {
+  background: #3C3C3C;
+}
+
 .sidebar {
   width: 250px;
-  background: #1e1e2e; /* Dark blue background */
+  background: #24292E; 
   padding: 10px;
-  border-right: 1px solid #313244; /* Subtle border */
+  border-right: 1px solid #3C3C3C; 
+  margin-left: 50px; 
+  transition: width 0.3s ease-in-out;
 }
 
-.sidebar h3 {
-  color: #cdd6f4; /* Soft pastel white */
-  margin-bottom: 10px;
+/* Sidebar Header */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #D4D4D4;
+  background: #2D333B;
+  border: 1px solid #3C3C3C;
 }
 
+/* Sidebar List */
 .sidebar ul {
   list-style: none;
   padding: 0;
 }
 
+.sidebar ul li i, 
+.sidebar ul li img {
+  width: 18px;  /* Adjust this as needed */
+  min-width: 18px;  /* Ensures all icons take up the same space */
+  height: 18px; /* Keeps image icons consistent with font-based icons */
+  text-align: center;
+}
+
 .sidebar ul li {
-  padding: 8px;
+  padding: 5px;
   cursor: pointer;
   display: flex;
   align-items: center;
   transition: background 0.2s;
-  background: #1e1e2e; /* Matches sidebar */
+  background: #24292E; 
+  gap: 8px
 }
 
 .sidebar ul li:hover {
-  background: #313244; /* Slightly brighter highlight */
+  background: #3C3C3C; /* Slightly brighter highlight */
 }
 
 .sidebar ul li i {
-  margin-right: 8px;
-  color: #89b4fa; /* Softer blue */
+  margin-right: 5px;
+  color: #58A6FF; 
 }
 
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #cdd6f4;
-  background: #313244;
-  border-bottom: 1px solid #414558;
+/* 🛠 Hide Sidebar on Small Screens */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 0;
+    overflow: hidden;
+  }
 }
 
-.sidebar-header i {
-  margin-right: 8px;
-  color: #89b4fa;
+.hidden {
+  display: none;
 }
 
+.sidebar {
+  font-size: 15px; /* Adjust this as needed */
+}
+
+.leetcode-logo,
+.contact-logo,
+.vscode-logo {
+  width: 20px; /* Adjust as needed */
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px; /* Moves the icon slightly downward */
+}

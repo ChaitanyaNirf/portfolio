@@ -1,5 +1,33 @@
+<!-- VS Code-Style Navbar -->
+<header class="vscode-navbar">
+  <div class="navbar-left">
+    <img src="https://img.icons8.com/?size=100&id=0OQR1FYCuA9f&format=png&color=000000" alt="VS Code Logo" class="vscode-logo">
+    <span class="menu-item">File</span>
+    <span class="menu-item">Edit</span>
+    <span class="menu-item">Selection</span>
+    <span class="menu-item">View</span>
+    <span class="menu-item">Go</span>
+    <span class="menu-item">Run</span>
+    <span class="menu-item">Terminal</span>
+    <span class="menu-item">Help</span>
+  </div>
+  
+  <div class="navbar-center">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span>Chaitanya Nirfarake - Portfolio</span>
+  </div>
+
+  <div class="navbar-right">
+    <i class="fa-regular fa-window-minimize"></i>
+    <i class="fa-regular fa-window-maximize"></i>
+    <i class="fa-solid fa-xmark"></i>
+  </div>
+</header>
+
+<!-- Main Layout -->
 <div class="app-container">
   <app-sidebar (sectionSelected)="openSection($event)"></app-sidebar>
+  
   <div class="editor">
     <app-tabs 
       [openTabs]="openTabs" 
@@ -7,6 +35,24 @@
       (tabClosed)="updateOpenTabs($event)"
       (tabChanged)="switchTab($event)">
     </app-tabs>
+    
     <app-editor [content]="editorContent" [activeTab]="activeTab"></app-editor>
   </div>
 </div>
+
+<!-- VS Code-Style Footer -->
+<footer class="vscode-footer">
+  <div class="left-section">
+    <i class="fa-solid fa-code-branch"></i>
+    <span>main</span>
+    <span class="divider"></span>
+    <i class="fa-solid fa-xmark error-icon"></i>
+    <span>0</span>
+    <i class="fa-solid fa-triangle-exclamation warning-icon"></i>
+    <span>0</span>
+  </div>
+
+  <div class="right-section">
+    <i class="fa-regular fa-bell"></i>
+  </div>
+</footer>

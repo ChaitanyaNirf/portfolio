@@ -3,77 +3,77 @@
     max-width: 1000px;
     margin: auto;
     padding: 20px;
-    color: #c9d1d9;
-    padding-bottom: 10px;
-  }
-  
-  /* Profile Section */
-  .profile {
+    color: #D4D4D4; /* Softer text color */
+    padding-bottom: 80px;
+}
+
+/* Profile Section */
+.profile {
     display: flex;
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
-  }
-  
-  .avatar {
+}
+
+.avatar {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 2px solid #c9d1d9;
-  }
-  
-  .profile-info h2 {
+    border: 2px solid #D4D4D4; /* Softer contrast */
+}
+
+.profile-info h2 {
     margin: 0;
     font-size: 22px;
-  }
-  
-  /* Pinned Repos */
-  .pinned-repos {
+}
+
+/* Pinned Repositories */
+.pinned-repos {
     margin-bottom: 15px;
-  }
-  
-  .repo-list {
+}
+
+.repo-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 10px;
-  }
-  
-  .repo-card {
-    background: #161b22;
+}
+
+.repo-card {
+    background: #2d3339; /* Darker card background */
     padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #30363d;
-  }
-  
-  .repo-header a {
+    border-radius: 20px;
+    border: 1px solid #30363D; /* Subtle border */
+}
+
+.repo-header a {
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
-    color: #58a6ff;
-  }
-  
-  .repo-footer {
+    color: #58A6FF; /* VS Code accent blue */
+}
+
+.repo-footer {
     display: flex;
     justify-content: space-between;
     font-size: 12px;
     margin-top: 10px;
-  }
-  
-  .lang-dot {
+}
+
+.lang-dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
     display: inline-block;
     margin-right: 5px;
-  }
-  
-  /* Contributions Grid */
-  .contributions {
+}
+
+/* Contributions Grid */
+.contributions {
     margin-top: 20px;
     margin-bottom: 50px;
-  }
-  
-  .contribution-grid {
+}
+
+.contribution-grid {
     display: flex;
     gap: 3px;
     flex-wrap: nowrap; /* Ensures the heatmap is always in one row */
@@ -86,27 +86,25 @@
     gap: 3px;
 }
 
-  
-  .day {
+.day {
     width: 15px;
     height: 15px;
     border-radius: 3px;
-    background-color: #161b22;
+    background-color: #1F2428; /* Updated background color */
     transition: background-color 0.2s ease-in-out;
-  }
-  
-  .day:hover {
+}
+
+.day:hover {
     filter: brightness(1.3);
-  }
-  
-  .contributions h3 {
+}
+
+.contributions h3 {
     font-size: 16px;
     margin-bottom: 5px;
 }
 
 .contribution-period {
     font-size: 14px;
-    color: #8b949e;
+    color: #8B949E; /* Muted text color */
     margin-bottom: 10px;
 }
-

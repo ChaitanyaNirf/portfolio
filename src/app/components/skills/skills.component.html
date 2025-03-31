@@ -1,20 +1,19 @@
 <div class="skills-container">
-    <div class="skills-header">
-        <i class="fas fa-tools"></i> Skills
-      </div>
-      
-    <div class="skills-grid">
-      <div class="skill-card" *ngFor="let skill of skills">
-        <div class="skill-inner">
-          <div class="skill-front">
-            <i [class]="skill.icon"></i>
-            <span>{{ skill.name }}</span>
-          </div>
-          <div class="skill-back">
-            <span>Level: {{ skill.level }}/10</span>
-          </div>
+  <div class="skills-header">
+      <i class="fas fa-tools"></i> Skills
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card" *ngFor="let skill of skills">
+      <div class="skill-inner">
+        <div class="skill-front">
+          <img [src]="skill.iconUrl" alt="{{ skill.name }}" class="skill-icon">
+          <span>{{ skill.name }}</span>
+        </div>
+        <div class="skill-back">
+          <span>Level: {{ skill.level }}/10</span>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

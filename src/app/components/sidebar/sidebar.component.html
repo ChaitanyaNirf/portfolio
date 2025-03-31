@@ -1,22 +1,44 @@
-<div class="sidebar">
-  <div class="sidebar-header">
+<!-- Activity Bar -->
+<div class="activity-bar">
+  <div class="activity-icon" (click)="toggleSidebar('Welcome')">
     <i class="fas fa-folder"></i>
+  </div>
+  <div class="activity-icon" (click)="toggleSidebar('GitHub')">
+    <i class="fab fa-github"></i>
+  </div>
+  <div class="activity-icon" (click)="toggleSidebar('Leetcode')">
+    <img class="leetcode-logo" src="https://img.icons8.com/?size=100&id=9L16NypUzu38&format=png&color=000000" alt="Leetcode Icon">
+  </div>
+  <div class="activity-icon" (click)="toggleSidebar('Projects')">
+    <i class="fas fa-code"></i>
+  </div>
+  <div class="activity-icon" (click)="toggleSidebar('Contact')">
+    <i class="fas fa-address-card"></i>
+  </div>
+</div>
+
+<!-- Primary Sidebar -->
+<div class="sidebar" [class.hidden]="isCollapsed">
+  <div class="sidebar-header">
     <span>Chaitanya Nirfarake</span>
   </div>
+
   <ul>
     <li *ngFor="let tab of allTabs" (click)="openSection(tab)">
       <span *ngIf="tab !== 'None'">
-        <i *ngIf="tab.toLowerCase() === 'resume'" class="fas fa-file-pdf" style="color: #E5534B;"></i>
-        <i *ngIf="tab.toLowerCase() === 'github'" class="fab fa-github" style="color: #181717;"></i>
-        <i *ngIf="tab.toLowerCase() === 'leetcode'" class="fas fa-code" style="color: #F89F1B;"></i>
-        <i *ngIf="tab.toLowerCase() === 'experience'" class="fas fa-user-tie" style="color: #43A6C6;"></i>
-        <i *ngIf="tab.toLowerCase() === 'projects'" class="fas fa-folder-open" style="color: #FACC15;"></i>
-        <i *ngIf="tab.toLowerCase() === 'publications'" class="fas fa-scroll" style="color: #C19A6B;"></i>
-        <i *ngIf="tab.toLowerCase() === 'contact'" class="fas fa-address-card" style="color: #2AA198;"></i>
-        <i *ngIf="tab.toLowerCase() === 'welcome'" class="fas fa-star" style="color: #D3D3D3;"></i>
-        <i *ngIf="tab.toLowerCase() === 'skills'" class="fas fa-laptop-code" style="color: #D3D3D3;"></i>
-        {{ tab }}
+        <i *ngIf="tab.toLowerCase() === 'resume'" class="fas fa-file-pdf" style="color: #e23c33;"></i>
+        <i *ngIf="tab.toLowerCase() === 'github'" class="fab fa-github" style="color: #e5dfdf;"></i>
+        <img *ngIf="tab.toLowerCase() === 'leetcode'" src="https://img.icons8.com/?size=100&id=9L16NypUzu38&format=png&color=000000" alt="Leetcode Icon" class="leetcode-logo">
+        <i *ngIf="tab.toLowerCase() === 'experience'" class="fab fa-markdown" style="color: #43A6C6;"></i>
+        <i *ngIf="tab.toLowerCase() === 'projects'" class="fab fa-js" style="color: #3178C6;"></i> <!-- TypeScript Icon -->
+        <i *ngIf="tab.toLowerCase() === 'publications'" class="fab fa-html5" style="color: #e9765a;"></i>
+        <img *ngIf="tab.toLowerCase() === 'contact'" class="contact-logo" src="https://img.icons8.com/?size=100&id=FN6oB7p7yePV&format=png&color=000000">
+        <img *ngIf="tab.toLowerCase() === 'welcome'" src="https://img.icons8.com/?size=100&id=0OQR1FYCuA9f&format=png&color=000000" alt="VS Code Icon" class="vscode-logo">
+        <i *ngIf="tab.toLowerCase() === 'skills'" class="fab fa-css3-alt" style="color: #2d6db6;"></i>
+
+        {{ getFormattedTabName(tab) }}
       </span>
     </li>
   </ul>
 </div>
+
