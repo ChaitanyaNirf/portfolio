@@ -5,7 +5,7 @@ html, body {
   height: 100%;
   background-color: #1F2428; /* Primary background */
   color: #D4D4D4; /* Default text color */
-  overflow-x: hidden; /* Prevents unwanted horizontal scroll */
+  overflow: hidden; /* Prevents unwanted horizontal scroll */
 }
 
 app-root {
@@ -13,3 +13,8 @@ app-root {
   flex-direction: column;
   min-height: 100vh; /* Ensures it takes the full height */
 }
+
+* {
+  font-family: "Segoe WPC", "Segoe UI", sans-serif;
+}
+

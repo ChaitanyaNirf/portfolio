@@ -6,7 +6,7 @@
   width: 100%;
   overflow: hidden; /* Prevents any unnecessary scrolling */
   background: #1F2428; /* VS Code Editor Background */
-  padding-bottom: 50px;
+  padding-bottom: 110px;
 }
 
 .pdf-wrapper {

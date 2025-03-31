@@ -9,15 +9,15 @@ import { Component } from '@angular/core';
 })
 export class SkillsComponent {
   skills = [
-    { name: 'Node.js', icon: 'fab fa-node', level: 9 },
-    { name: 'Java', icon: 'fab fa-java', level: 9 },
-    { name: 'TypeScript', icon: 'fab fa-js', level: 9 },
-    { name: 'Angular', icon: 'fab fa-angular', level: 8 },
-    { name: 'Kubernetes', icon: 'fas fa-network-wired', level: 9 },
-    { name: 'Kafka', icon: 'fas fa-stream', level: 8 },
-    { name: 'Redis', icon: 'fas fa-memory', level: 8 },
-    { name: 'PostgreSQL', icon: 'fas fa-database', level: 8 },
-    { name: 'Verdaccio (NPM Registry)', icon: 'fas fa-box-open', level: 8 },
-    { name: 'Git', icon: 'fab fa-git-alt', level: 9 }
+    { name: 'Node.js', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', level: 9 },
+    { name: 'Java', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg', level: 9 },
+    { name: 'TypeScript', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', level: 9 },
+    { name: 'Angular', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg', level: 8 },
+    { name: 'Kubernetes', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg', level: 9 },
+    { name: 'Kafka', iconUrl: 'https://img.icons8.com/?size=100&id=fOhLNqGJsUbJ&format=png&color=000000', level: 8 },
+    { name: 'Redis', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg', level: 8 },
+    { name: 'PostgreSQL', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', level: 8 },
+    { name: 'Verdaccio', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg', level: 8 },
+    { name: 'Git', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', level: 9 }
   ];
 }

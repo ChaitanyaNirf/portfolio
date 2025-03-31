@@ -103,3 +103,10 @@
   border-bottom: 2px solid #58a6ff;
   transition: all 0.3s ease-in-out;
 }
+
+.skill-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 5px;
+}
+
