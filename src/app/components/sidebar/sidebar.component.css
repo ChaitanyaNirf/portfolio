@@ -1,12 +1,12 @@
 .sidebar {
-  width: 250px;
-  background: #1e1e2e; /* Dark blue background */
+  width: 100%;
+  background: #24292E; /* Secondary background */
   padding: 10px;
-  border-right: 1px solid #313244; /* Subtle border */
+  border-right: 1px solid #3C3C3C; /* Subtle border */
 }
 
 .sidebar h3 {
-  color: #cdd6f4; /* Soft pastel white */
+  color: #D4D4D4; /* Default text color */
   margin-bottom: 10px;
 }
 
@@ -21,31 +21,32 @@
   display: flex;
   align-items: center;
   transition: background 0.2s;
-  background: #1e1e2e; /* Matches sidebar */
+  background: #24292E; /* Matches sidebar */
 }
 
 .sidebar ul li:hover {
-  background: #313244; /* Slightly brighter highlight */
+  background: #3C3C3C; /* Slightly brighter highlight */
 }
 
 .sidebar ul li i {
   margin-right: 8px;
-  color: #89b4fa; /* Softer blue */
+  color: #58A6FF; /* Soft blue */
 }
 
 .sidebar-header {
   display: flex;
   align-items: center;
-  padding: 8px;
+  padding: 1px;
   font-size: 16px;
   font-weight: bold;
-  color: #cdd6f4;
-  background: #313244;
-  border-bottom: 1px solid #414558;
+  color: #D4D4D4;
+  background: #2D333B;
+  border: 1px solid #3C3C3C;
 }
 
-.sidebar-header i {
-  margin-right: 8px;
-  color: #89b4fa;
+.sidebar-header img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin-right: 15px;
 }
-

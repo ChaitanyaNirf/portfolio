@@ -1,20 +1,22 @@
 /* Full-page layout */
 .app-container {
   display: flex;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
   overflow: hidden;
-  background-color: #181825; /* Dark background */
+  background-color: #1E1E1E; /* VS Code Dark Theme */
 }
 
 /* Sidebar styling */
 app-sidebar {
   width: 250px;
-  background-color: #1e1e2e; /* Dark blue */
-  color: #cdd6f4; /* Soft white */
+  background-color: #24292E; /* Slightly lighter than background */
+  color: #D4D4D4;
   height: 100vh;
   overflow-y: auto;
-  border-right: 1px solid #313244; /* Subtle contrast */
+  border-right: 1px solid #3C3C3C; /* Subtle border */
   padding: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Custom scrollbar for sidebar */
@@ -22,11 +24,11 @@ app-sidebar::-webkit-scrollbar {
   width: 8px;
 }
 app-sidebar::-webkit-scrollbar-thumb {
-  background-color: #585b70; /* Soft scrollbar */
+  background-color: #484848; /* Dark scrollbar */
   border-radius: 4px;
 }
 app-sidebar::-webkit-scrollbar-thumb:hover {
-  background-color: #6c7086;
+  background-color: #5A5A5A;
 }
 
 /* Editor section */
@@ -34,9 +36,43 @@ app-sidebar::-webkit-scrollbar-thumb:hover {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #181825; /* Dark background */
-  border-left: 1px solid #313244; /* Subtle border */
+  background-color: #1F2428; /* Match main background */
+  border-left: 1px solid #3C3C3C;
   padding: 14px;
+}
+
+/* Tabs Styling */
+.editor-tabs {
+  display: flex;
+  background-color: #252526;
+  border-bottom: 1px solid #3C3C3C;
+  padding: 6px 12px;
+  gap: 10px;
+}
+
+.editor-tab {
+  color: #D4D4D4;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.editor-tab.active {
+  background-color: #3C3C3C;
+  color: #007ACC; /* VS Code Blue */
+}
+
+.editor-tab:hover {
+  background-color: #2D2D2D;
+}
+
+/* Accent Color for Interactive Elements */
+button, a, .active-tab {
+  color: #007ACC; /* VS Code Blue */
+}
+button:hover, a:hover, .active-tab:hover {
+  color: #3EA6FF; /* Lighter blue hover */
 }
 
 /* Smooth transitions */
@@ -59,7 +95,6 @@ app-sidebar, .editor {
     width: 100%;
     height: auto;
     border-right: none;
-    border-bottom: 1px solid #313244;
+    border-bottom: 1px solid #3C3C3C;
   }
 }
-
