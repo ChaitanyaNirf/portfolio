@@ -35,7 +35,7 @@
 
 .sidebar {
   width: 250px;
-  background: #24292E; 
+  background: #23272c; 
   padding: 10px;
   border-right: 1px solid #3C3C3C; 
   margin-left: 50px; 
@@ -96,7 +96,7 @@
   display: flex;
   align-items: center;
   transition: background 0.2s;
-  background: #24292E; 
+  background: #23272c; 
   gap: 8px
 }
 

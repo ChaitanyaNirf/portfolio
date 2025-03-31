@@ -10,7 +10,7 @@
 /* Sidebar styling */
 app-sidebar {
   width: 250px;
-  background-color: #24292E; /* Slightly lighter than background */
+  background-color: #23272c; /* Slightly lighter than background */
   color: #D4D4D4;
   height: 100vh;
   overflow-y: auto;
@@ -216,7 +216,6 @@ app-sidebar, .editor {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-weight: bold;
   color: #c9d1d9;
   white-space: nowrap; /* Prevents wrapping */
   background-color: #353b41;
