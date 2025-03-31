@@ -1,0 +1,32 @@
+<div class="contact-container">
+    <h2 class="section-title">Contact</h2>
+    <p class="intro">
+      Feel free to connect! If you have any feedback or just want to say hi, reach out via the following channels:
+    </p>
+  
+    <div class="json-box">
+      <span class="brace">{{ '{' }}</span><br />
+      <div *ngFor="let key of (contactInfo | keyvalue); let last = last">
+        <span class="key">"{{ key.key }}"</span>: 
+        <span 
+          *ngIf="isLink(key.value); else textValue"
+          class="value link"
+        >
+          <a [href]="key.value" target="_blank">"{{ key.value }}"</a>
+        </span>
+        <ng-template #textValue>
+          <span 
+            class="value" 
+            (click)="copyToClipboard(key.value)"
+            title="Click to copy"
+          >
+            "{{ key.value }}"
+          </span>
+        </ng-template>
+        {{ last ? '' : ',' }}
+      </div>
+      <span class="brace">{{ '}' }}</span>
+      <span class="cursor">|</span>
+    </div>
+  </div>
+  

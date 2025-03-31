@@ -60,7 +60,7 @@ export class SidebarComponent {
       case 'projects':
         return 'projects.ts';
       case 'leetcode':
-        return 'leetcode.code';
+        return 'leetcode';
       default:
         return tab; // Fallback to the original name if not mapped
     }
