@@ -19,11 +19,16 @@
 
 <!-- Primary Sidebar -->
 <div class="sidebar" [class.hidden]="isCollapsed">
-  <div class="sidebar-header">
-    <span>Chaitanya Nirfarake</span>
+  <div class="sidebar-header-workspace">
+    <span>Chaitu's Workspace</span>
   </div>
+<div class="sidebar-header" (click)="toggleFileList()">
+  <i class="fas fa-chevron-down" [class.collapsed]="isFileListHidden"></i>
+  <span>PORTFOLIO</span>
+</div>
 
-  <ul>
+
+  <ul [class.hidden]="isFileListHidden">
     <li *ngFor="let tab of allTabs" (click)="openSection(tab)">
       <span *ngIf="tab !== 'None'">
         <i *ngIf="tab.toLowerCase() === 'resume'" class="fas fa-file-pdf" style="color: #e23c33;"></i>
@@ -40,5 +45,14 @@
       </span>
     </li>
   </ul>
+
+  <div class="sidebar-header" (click)="toggleOutlineList()">
+    <i class="fas fa-chevron-down" [class.collapsed]="isOutLineHidden"></i>
+    <span>OUTLINE</span>
+  </div>
+  <div class="sidebar-header" (click)="toggleTimelineList()">
+    <i class="fas fa-chevron-down" [class.collapsed]="isTimeLineHidden"></i>
+    <span>TIMELINE</span>
+  </div>
 </div>
 

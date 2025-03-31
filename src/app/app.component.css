@@ -104,12 +104,12 @@ app-sidebar, .editor {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background: #24292E;
+  background: #1d2024;
   color: #D4D4D4;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2px 15px;
+  padding: 0.5px 15px;
   font-size: 14px;
   border-top: 1px solid #3C3C3C;
   box-sizing: border-box;
@@ -135,15 +135,15 @@ app-sidebar, .editor {
 }
 
 .fa-code-branch {
-  color: #539BF5;
+  color: #D4D4D4;
 }
 
 .error-icon {
-  color: #f80000;
+  color: #D4D4D4;
 }
 
 .warning-icon {
-  color: #dcec28;
+  color: #D4D4D4;
 }
 
 .divider {
@@ -181,7 +181,7 @@ app-sidebar, .editor {
   top: 0;
   width: 100%;
   height: 30px;
-  background-color: #24292E;
+  background-color: #1d2024;
   color: #D4D4D4;
   display: flex;
   align-items: center;
@@ -253,3 +253,24 @@ app-sidebar, .editor {
   background-color: #ec3b4a;
   color: white;
 }
+
+@media (max-width: 1400px) {
+  .navbar-center span {
+    display: none; /* Hide text, keep only the icon */
+  }
+  .navbar-center {
+    max-width: 25%; /* Reduce size */
+    padding: 4px 3%; /* Reduce padding */
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar-left .menu-item {
+    display: none; /* Hide File, Edit, etc. */
+  }
+
+  .navbar-left {
+    gap: 6px; /* Reduce spacing */
+  }
+}
+

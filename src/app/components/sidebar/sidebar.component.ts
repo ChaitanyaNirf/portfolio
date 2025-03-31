@@ -12,7 +12,9 @@ export class SidebarComponent {
   @Output() sectionSelected = new EventEmitter<string>();
   isCollapsed: boolean = false;
   allTabs: string[] = Constants.ALL_TABS;
-
+  isFileListHidden = false;
+  isOutLineHidden = true;
+  isTimeLineHidden = true;
   constructor() {
     this.updateSidebarVisibility();
   }
@@ -39,7 +41,7 @@ export class SidebarComponent {
 
   getFormattedTabName(tab: string): string {
     const lowerTab = tab.toLowerCase();
-  
+
     switch (lowerTab) {
       case 'welcome':
         return 'Welcome';
@@ -63,5 +65,18 @@ export class SidebarComponent {
         return tab; // Fallback to the original name if not mapped
     }
   }
-  
+
+  toggleFileList() {
+    this.isFileListHidden = !this.isFileListHidden;
+  }
+
+  toggleOutlineList() {
+    this.isOutLineHidden = !this.isOutLineHidden;
+  }
+
+  toggleTimelineList() {
+    this.isTimeLineHidden = !this.isTimeLineHidden;
+  }
+
+
 }
