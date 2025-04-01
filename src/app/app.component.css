@@ -216,7 +216,6 @@ app-sidebar, .editor {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-weight: bold;
   color: #c9d1d9;
   white-space: nowrap; /* Prevents wrapping */
   background-color: #353b41;
