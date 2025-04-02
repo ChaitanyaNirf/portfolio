@@ -1,14 +1,18 @@
 <div class="github-container">
-    <!-- Profile Section -->
+
+  <div *ngIf="!githubData" class="loading-container">
+    <p>🚀 Fetching real-time data from GitHub...</p>
+  </div>
+
+  <div *ngIf="githubData">
     <div class="profile">
-      <img [src]="githubData?.data?.viewer?.avatarUrl" alt="Avatar" class="avatar" />
+      <img [src]="githubData.data.viewer.avatarUrl" alt="Avatar" class="avatar" />
       <div class="profile-info">
-        <h2>{{ githubData?.data?.viewer?.login }}</h2>
-        <p>Total Repositories: {{ githubData?.data?.viewer?.repositories?.totalCount }}</p>
+        <h2>{{ githubData.data.viewer.login }}</h2>
+        <p>Total Repositories: {{ githubData.data.viewer.repositories.totalCount }}</p>
       </div>
     </div>
-  
-    <!-- Pinned Repositories -->
+
     <div class="pinned-repos">
       <h3>Pinned Repositories</h3>
       <div class="repo-list">
@@ -28,25 +32,23 @@
         </div>
       </div>
     </div>
-  
-<!-- Contributions Section -->
-<div class="contributions">
-    <h3>{{ githubData?.data?.viewer?.contributionsCollection?.contributionCalendar?.totalContributions }} contributions in the last year</h3>
-    <div class="contribution-period">
+
+    <div class="contributions">
+      <h3>{{ githubData.data.viewer.contributionsCollection.contributionCalendar.totalContributions }} contributions in the last year</h3>
+      <div class="contribution-period">
         <h3>Contributions ({{ getStartMonthYear() }} - {{ getEndMonthYear() }})</h3>
-    </div>
-    
-    <div class="contribution-grid">
-      <div *ngFor="let week of githubData?.data?.viewer?.contributionsCollection?.contributionCalendar?.weeks" class="week">
-        <div
-          *ngFor="let day of week.contributionDays"
-          class="day"
-          [style.background-color]="getContributionColor(day.contributionCount)"
-          [title]="day.date + ': ' + day.contributionCount + ' contributions'"
-        ></div>
+      </div>
+      
+      <div class="contribution-grid">
+        <div *ngFor="let week of githubData?.data?.viewer?.contributionsCollection?.contributionCalendar?.weeks" class="week">
+          <div
+            *ngFor="let day of week.contributionDays"
+            class="day"
+            [style.background-color]="getContributionColor(day.contributionCount)"
+            [title]="day.date + ': ' + day.contributionCount + ' contributions'"
+          ></div>
+        </div>
       </div>
     </div>
   </div>
-  
-  </div>
-  
+</div>

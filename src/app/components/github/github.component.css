@@ -113,3 +113,12 @@
     color: #8B949E; /* Muted text color */
     margin-bottom: 10px;
 }
+
+/* Loader */
+.loading-container {
+    text-align: center;
+    font-size: 1.2em;
+    color: #c7d0da;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+  }
