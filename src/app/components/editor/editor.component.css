@@ -31,3 +31,9 @@
   scrollbar-width: thin;
   scrollbar-color: #3C3C3C #24292E;
 }
+
+@media (max-width: 768px) {
+  .content {
+    margin-left: 40px;
+  }
+}

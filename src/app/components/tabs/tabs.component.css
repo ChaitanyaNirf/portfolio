@@ -1,9 +1,38 @@
-.tabs {
-  background: #1F2428; /* Primary background */
-  padding: 6px 12px;
-  border-bottom: 1px solid #3C3C3C; /* Subtle separator */
+.tabs-container {
   display: flex;
   align-items: center;
+  position: relative;
+}
+
+.scroll-btn {
+  background: rgba(31, 36, 40, 0.8); 
+  color: #D4D4D4;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  font-size: 18px;
+  transition: background 0.3s ease;
+}
+
+.scroll-btn:hover {
+  background: rgba(31, 36, 40, 1);
+}
+
+.tabs {
+  background: #1F2428; 
+  padding: 6px 12px;
+  border-bottom: 1px solid #3C3C3C; 
+  display: flex;
+  align-items: center;
+  overflow-x: auto; 
+  white-space: nowrap; 
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+  flex-grow: 1;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .tabs span {
@@ -11,38 +40,44 @@
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  background: #24292E; /* Secondary background */
-  border: 1px solid #3C3C3C; /* Subtle border */
+  background: #24292E; 
+  border: 1px solid #3C3C3C; 
   border-bottom: none;
   margin-right: 5px;
   cursor: pointer;
-  color: #D4D4D4; /* VS Code text color */
+  color: #D4D4D4; 
   font-size: 14px;
   border-radius: 5px 5px 0 0;
   transition: background 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
 }
 
 .tabs span:hover {
-  background: #2D333B; /* Slightly lighter hover effect */
+  background: #2D333B; 
   color: #EAEAEA;
 }
 
 .tabs span.active {
-  background: #24292E; /* Slight contrast for active tab */
+  background: #24292E; 
   color: #FFFFFF;
-  border-color: #2a67ad; /* Accent color */
-  box-shadow: 0px -2px 8px rgba(22, 86, 159, 0.656); /* Soft glow effect */
+  border-color: #2a67ad; 
+  box-shadow: 0px -2px 8px rgba(22, 86, 159, 0.656); 
 }
 
 .tabs span button {
   background: none;
   border: none;
-  color: #7F849C; /* Softer inactive color */
+  color: #7F849C; 
   font-size: 14px;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 .tabs span button:hover {
-  color: #58A6FF; /* VS Code-like highlight */
+  color: #58A6FF; 
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    margin-left: 40px; 
+  }
 }
