@@ -1,3 +1,6 @@
+<div *ngIf="isLoading" class="loading-container">
+  <p>🚀 Fetching real-time data from Leetcode...</p>
+</div>
 <div *ngIf="!isLoading && monthlyData.size > 0" class="leetcode-container">
   <!-- Profile Section -->
   <div class="profile">
