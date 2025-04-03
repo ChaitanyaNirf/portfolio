@@ -66,29 +66,28 @@ export class LeetcodeComponent implements OnInit {
     const oneYearAgo = new Date();
     oneYearAgo.setFullYear(today.getFullYear() - 1);
     oneYearAgo.setDate(oneYearAgo.getDate() + 1);
-
     const submissionMap = new Map<string, number>();
-
-    //convert API data (UNIX timestamp -> Date)
+  
+    //convert API data (UNIX timestamp -> date)
     for (const [timestamp, count] of Object.entries(submissionCalendar)) {
-      const date = new Date(Number(timestamp) * 1000).toISOString().split('T')[0];
+      const date = new Date(Number(timestamp) * 1000).toISOString().split('T')[0]; // 'YYYY-MM-DD'
       submissionMap.set(date, Number(count));
     }
-
     this.monthlyData.clear();
-
     for (let d = new Date(oneYearAgo); d <= today; d = new Date(d.getTime() + 86400000)) {
-      const dateString = d.toISOString().split('T')[0];
+      const dateString = d.toISOString().split('T')[0]; // 'YYYY-MM-DD'
       const count = submissionMap.get(dateString) || 0;
-      // Subtract 1 day because for the value of d is incrementing even before the iteration ends 
-      let temp = new Date(d.getTime() - 86400000); 
-      const monthKey = `${temp.getFullYear()}-${temp.getMonth()}`; 
+      //extract "YYYY-MM" 
+      const monthKey = dateString.slice(0, 7); 
       if (!this.monthlyData.has(monthKey)) {
         this.monthlyData.set(monthKey, []);
       }
       this.monthlyData.get(monthKey)!.push({ date: dateString, count });
     }
+  
+    // console.log(this.monthlyData); 
   }
+  
 
   getMonthView(monthKey: string): { date: string; count: number }[][] {
     const days = this.monthlyData.get(monthKey) || [];
@@ -121,8 +120,8 @@ export class LeetcodeComponent implements OnInit {
 
   getMonthName(monthKey: string): string {
     const [year, month] = monthKey.split('-').map(Number);
-    return new Date(year, month).toLocaleString('default', { month: 'long', year: 'numeric' });
-  }
+    return new Date(year, month - 1).toLocaleString('default', { month: 'long', year: 'numeric' });
+  }  
 
   getHeatmapColor(count: number): string {
     if (count === 0) return '#525452';
