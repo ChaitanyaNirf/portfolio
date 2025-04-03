@@ -3,11 +3,10 @@
     max-width: 1000px;
     margin: auto;
     padding: 20px;
-    color: #D4D4D4; /* Softer text color */
+    color: #D4D4D4;
     padding-bottom: 80px;
 }
 
-/* Profile Section */
 .profile {
     display: flex;
     align-items: center;
@@ -19,7 +18,7 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 2px solid #D4D4D4; /* Softer contrast */
+    border: 2px solid #D4D4D4; 
 }
 
 .profile-info h2 {
@@ -27,7 +26,6 @@
     font-size: 22px;
 }
 
-/* Pinned Repositories */
 .pinned-repos {
     margin-bottom: 15px;
 }
@@ -39,10 +37,10 @@
 }
 
 .repo-card {
-    background:  rgba(0, 0, 0, 0.2); /* Darker card background */
+    background:  rgba(0, 0, 0, 0.2); 
     padding: 15px;
     border-radius: 10px;
-    border: 1px solid #30363D; /* Subtle border */
+    border: 1px solid #30363D; 
 }
 
 .repo-card:hover {
@@ -54,7 +52,7 @@
     text-decoration: none;
     font-size: 16px;
     font-weight: bold;
-    color: #58A6FF; /* VS Code accent blue */
+    color: #58A6FF; 
 }
 
 .repo-footer {
@@ -87,7 +85,7 @@
 
 .week {
     display: flex;
-    flex-direction: column; /* Stack days vertically */
+    flex-direction: column; 
     gap: 3px;
 }
 
@@ -95,7 +93,7 @@
     width: 15px;
     height: 15px;
     border-radius: 3px;
-    background-color: #1F2428; /* Updated background color */
+    background-color: #1F2428; 
     transition: background-color 0.2s ease-in-out;
 }
 
@@ -114,7 +112,6 @@
     margin-bottom: 10px;
 }
 
-/* Loader */
 .loading-container {
     text-align: center;
     font-size: 1.2em;

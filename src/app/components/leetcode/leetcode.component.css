@@ -147,6 +147,14 @@ p {
   box-shadow: 0px 0px 6px rgba(100, 200, 255, 0.6);
 }
 
+.loading-container {
+  text-align: center;
+  font-size: 1.2em;
+  color: #c7d0da;
+  padding: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
 /* RESPONSIVENESS */
 @media (max-width: 1024px) {
   .month-section {
