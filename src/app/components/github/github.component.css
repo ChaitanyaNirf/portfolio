@@ -108,7 +108,7 @@
 
 .contribution-period {
     font-size: 14px;
-    color: #8B949E; /* Muted text color */
+    color: #8B949E;
     margin-bottom: 10px;
 }
 
@@ -119,3 +119,80 @@
     padding: 20px;
     animation: fadeIn 0.5s ease-in-out;
   }
+
+  @media (max-width: 768px) {
+    .github-container {
+        margin-left: -5%;
+        max-width: 80vw;
+    }
+    
+    .profile {
+        max-width: 50vw;
+    }
+    
+    .avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 2px solid #D4D4D4; 
+    }
+    
+    .profile-info h2 {
+        margin: 0;
+        font-size: 18px;
+    }
+    
+    .pinned-repos {
+        margin-bottom: 15px;
+        font-size: 80%;
+    }
+        
+    .repo-card {
+        background:  rgba(0, 0, 0, 0.2); 
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #30363D; 
+        max-width: 80%;
+    }
+    
+    .repo-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    .repo-header a {
+        font-size: 12px;
+    }
+    
+    .lang-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 5px;
+    }
+    
+    .contributions {
+        margin-top: 20px;
+        margin-bottom: 50px;
+        max-width: 80%;
+    }
+    .contribution-grid {
+        transform: scale(1.1);
+        transform-origin: top left;
+        overflow-x: auto;
+    }
+
+    .day {
+        width: 12px;
+        height: 12px;
+    }
+
+    .loading-container {
+        text-align: center;
+        font-size: 90%;
+        color: #c7d0da;
+        padding: 20px;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+}
