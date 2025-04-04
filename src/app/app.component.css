@@ -20,12 +20,12 @@ app-sidebar {
   flex-direction: column;
 }
 
-/* Custom scrollbar for sidebar */
+
 app-sidebar::-webkit-scrollbar {
   width: 8px;
 }
 app-sidebar::-webkit-scrollbar-thumb {
-  background-color: #484848; /* Dark scrollbar */
+  background-color: #484848; 
   border-radius: 4px;
 }
 app-sidebar::-webkit-scrollbar-thumb:hover {

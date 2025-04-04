@@ -5,6 +5,7 @@
     color: #dcdcdc;
     opacity: 0;
     animation: fadeIn 1s forwards;
+    max-width: 80vw;
 }
 
 /* Left Section */
@@ -56,7 +57,7 @@
     font-size: 1.1em;
     color: #dcdcdc;
     box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
-    max-width: 90%;
+    max-width: 90vw;;
     white-space: pre-wrap;
 }
 
@@ -99,5 +100,46 @@
 @keyframes fadeIn {
     to {
         opacity: 1;
+    }
+}
+
+/* Responsive Design (For Smaller Screens) */
+@media (max-width: 768px) {
+    .welcome-container {
+        flex-direction: column; /* Stacks elements vertically */
+        align-items: flex-start; /* Aligns left for better readability */
+        padding: 10px;
+        overflow: hidden; /* Ensures no unwanted scrolling */
+    }
+
+    .left-section,
+    .right-section {
+        width: 100%; /* Makes sections take full width */
+        min-width: unset; /* Allows dynamic resizing */
+    }
+
+    .welcome-title {
+        font-size: 1.8em; /* Slightly smaller title */
+        white-space: normal; /* Wraps text */
+    }
+
+    .name-title {
+        font-size: 2.5em;
+    }
+
+    .profession {
+        font-size: 1.2em;
+    }
+
+    .right-section {
+        max-width: 90%; /* Prevents overflow */
+        overflow-x: auto; /* Allows horizontal scrolling inside the code block only */
+        margin-bottom: 50%;
+        
+    }
+
+    .code-block {
+        font-size: 80%; /* Adjusts text size for smaller screens */
+        padding: 12px;
     }
 }
