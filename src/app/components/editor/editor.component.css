@@ -4,8 +4,8 @@
   background: #1F2428; /* Primary background */
   color: #D4D4D4; /* Default text color */
   overflow-y: auto;
-  max-height: calc(100vh - 50px);
-  min-width: 400px;
+  max-height: calc(100dvh - 50px);
+  min-width: 0px;
 }
 
 /* Scrollbars */
