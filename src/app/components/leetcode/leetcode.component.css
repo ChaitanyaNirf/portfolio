@@ -3,7 +3,8 @@
   max-width: 100%;
   margin: auto;
   padding: 20px;
-  color: #D4D4D4; /* Softer text color */
+  color: #D4D4D4;
+  /* Softer text color */
   padding-bottom: 10px;
 }
 
@@ -22,7 +23,8 @@
 .leetcode-username {
   font-size: 22px;
   font-weight: bold;
-  color: #58A6FF; /* VS Code Blue */
+  color: #58A6FF;
+  /* VS Code Blue */
   text-decoration: none;
   display: block;
   margin-bottom: 10px;
@@ -97,11 +99,13 @@ p {
   padding: 10px;
   max-width: 100%;
   padding-bottom: 120px;
+  padding-right: 0%;
 }
 
 /* Month Section */
 .month-section {
-  background: #24292E; /* Darker VS Code Theme */
+  background: #24292E;
+  /* Darker VS Code Theme */
   padding: 10px;
   border-radius: 8px;
   width: calc(25% - 15px);
@@ -115,7 +119,8 @@ p {
 
 .month-section h3 {
   font-size: 1.1rem;
-  color: #9CDCFE; /* Soft Blue */
+  color: #9CDCFE;
+  /* Soft Blue */
   margin-bottom: 5px;
 }
 
@@ -127,7 +132,7 @@ p {
   font-size: 0.65rem;
 }
 
-.heatmap th, 
+.heatmap th,
 .heatmap td {
   padding: 4px;
   text-align: center;
@@ -135,14 +140,16 @@ p {
 }
 
 .heatmap td {
-  border: 1px solid #30363D; /* Subtle border */
+  border: 1px solid #30363D;
+  /* Subtle border */
   width: 14%;
   transition: all 0.2s ease-in-out;
 }
 
 /* Neon Hover Effect */
 .heatmap td:hover {
-  background: #1F4068; /* Dark Blue */
+  background: #1F4068;
+  /* Dark Blue */
   cursor: pointer;
   box-shadow: 0px 0px 6px rgba(100, 200, 255, 0.6);
 }
@@ -155,24 +162,64 @@ p {
   animation: fadeIn 0.5s ease-in-out;
 }
 
-/* RESPONSIVENESS */
-@media (max-width: 1024px) {
-  .month-section {
-    width: calc(33.33% - 15px);
-    max-width: 220px;
+@media (max-width: 1025px) {
+  .leetcode-container {
+    padding: 15px;
+    padding-right: 0%;
   }
-}
 
-@media (max-width: 768px) {
-  .month-section {
-    width: calc(50% - 15px);
-    max-width: 200px;
+  .whole-container {
+    padding-bottom: 40dvh;
+    margin-left: -2%;
+    min-height: 85dvh;
   }
-}
 
-@media (max-width: 480px) {
+  .difficulty-stats {
+    align-items: flex-start;
+  }
+
+  .reputation {
+    font-size: 14px;
+  }
+
+  .stats p {
+    font-size: 16px;
+  }
+
+  .difficulty-item {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .difficulty-count {
+    font-size: 16px;
+  }
+
+  .heatmap th,
+  .heatmap td {
+    font-size: 0.40rem;
+    padding: 1.5px;
+  }
+
+  .loading-container {
+    text-align: center;
+    font-size: 90%;
+    color: #c7d0da;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+    max-width: 70vw;
+  }
+
+  .month-section h3 {
+    font-size: .7rem;
+    color: #9CDCFE;
+    /* Soft Blue */
+    margin-bottom: 5px;
+  }
+
+  /* Month Section */
   .month-section {
-    width: 100%;
-    max-width: 100%;
+    min-width: 100px;
+    font-size: 0.8rem;
   }
 }

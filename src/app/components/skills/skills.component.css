@@ -1,6 +1,7 @@
 .skills-container {
   padding: 20px;
   color: #c9d1d9; /* Soft VS Code text color */
+  padding-bottom: 50dvh;
 }
 
 .skills-container h2 {

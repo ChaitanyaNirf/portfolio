@@ -1,69 +1,72 @@
-<div *ngIf="isLoading" class="loading-container">
-  <p>🚀 Fetching real-time data from Leetcode...</p>
-</div>
-<div *ngIf="!isLoading && monthlyData.size > 0" class="leetcode-container">
-  <!-- Profile Section -->
-  <div class="profile">
-    <div class="profile-info">
-      <!-- Hardcoded Username and Profile Link -->
-      <a class="leetcode-username" href="https://leetcode.com/ChaitanyaNirf" target="_blank">
-        <span>ChaitanyaNirf</span>
-      </a>
-      <p>Global Rank: 🌍 <strong>{{ userProfile?.globalRank }}</strong></p>
-    </div>
+<div class = "whole-container">
+  <div *ngIf="isLoading" class="loading-container">
+    <p>🚀 Fetching real-time data from Leetcode...</p>
   </div>
-
-  <!-- Problem Solved Stats -->
-  <div class="stats">
-    <p><strong>Problems Solved</strong></p>
-    <div class="difficulty-stats">
-      <div class="difficulty-item easy">
-        <span class="difficulty-label">Easy</span>
-        <span class="difficulty-count">{{ userProfile?.easySolved }}</span>
-      </div>
-      <div class="difficulty-item medium">
-        <span class="difficulty-label">Medium</span>
-        <span class="difficulty-count">{{ userProfile?.mediumSolved }}</span>
-      </div>
-      <div class="difficulty-item hard">
-        <span class="difficulty-label">Hard</span>
-        <span class="difficulty-count">{{ userProfile?.hardSolved }}</span>
+  <div *ngIf="!isLoading && monthlyData.size > 0" class="leetcode-container">
+    <!-- Profile Section -->
+    <div class="profile">
+      <div class="profile-info">
+        <!-- Hardcoded Username and Profile Link -->
+        <a class="leetcode-username" href="https://leetcode.com/ChaitanyaNirf" target="_blank">
+          <span>ChaitanyaNirf</span>
+        </a>
+        <p>Global Rank: 🌍 <strong>{{ userProfile?.globalRank }}</strong></p>
       </div>
     </div>
+  
+    <!-- Problem Solved Stats -->
+    <div class="stats">
+      <p><strong>Problems Solved</strong></p>
+      <div class="difficulty-stats">
+        <div class="difficulty-item easy">
+          <span class="difficulty-label">Easy</span>
+          <span class="difficulty-count">{{ userProfile?.easySolved }}</span>
+        </div>
+        <div class="difficulty-item medium">
+          <span class="difficulty-label">Medium</span>
+          <span class="difficulty-count">{{ userProfile?.mediumSolved }}</span>
+        </div>
+        <div class="difficulty-item hard">
+          <span class="difficulty-label">Hard</span>
+          <span class="difficulty-count">{{ userProfile?.hardSolved }}</span>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Reputation and Contribution -->
+    <div class="reputation">
+      ⭐ Reputation: <strong>{{ userProfile?.reputation }}</strong> | 🎖️ Contribution: <strong>{{ userProfile?.contributionPoints }}</strong>
+    </div>
+    <h3 class="stats"><strong>Submissions Calendar</strong></h3>
   </div>
-
-  <!-- Reputation and Contribution -->
-  <div class="reputation">
-    ⭐ Reputation: <strong>{{ userProfile?.reputation }}</strong> | 🎖️ Contribution: <strong>{{ userProfile?.contributionPoints }}</strong>
+  
+  <div *ngIf="!isLoading" class="heatmap-container">
+    <!-- Display Heatmap -->
+    <div *ngFor="let monthKey of monthlyData.keys()" class="month-section">
+      <h3>{{ getMonthName(monthKey) }}</h3>
+      <table class="heatmap">
+        <thead>
+          <tr>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let week of getMonthView(monthKey)">
+            <td *ngFor="let day of week"
+                [style.backgroundColor]="getHeatmapColor(day.count)"
+                [attr.title]="day.date ? day.date + ': ' + day.count + ' submissions' : ''">
+              {{ day.date ? day.date.split('-')[2] : '' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <h3 class="stats"><strong>Submissions Calendar</strong></h3>
-</div>
-
-<div *ngIf="!isLoading" class="heatmap-container">
-  <!-- Display Heatmap -->
-  <div *ngFor="let monthKey of monthlyData.keys()" class="month-section">
-    <h3>{{ getMonthName(monthKey) }}</h3>
-    <table class="heatmap">
-      <thead>
-        <tr>
-          <th>Sun</th>
-          <th>Mon</th>
-          <th>Tue</th>
-          <th>Wed</th>
-          <th>Thu</th>
-          <th>Fri</th>
-          <th>Sat</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let week of getMonthView(monthKey)">
-          <td *ngFor="let day of week"
-              [style.backgroundColor]="getHeatmapColor(day.count)"
-              [attr.title]="day.date ? day.date + ': ' + day.count + ' submissions' : ''">
-            {{ day.date ? day.date.split('-')[2] : '' }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  
 </div>
