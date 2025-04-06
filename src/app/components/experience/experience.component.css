@@ -204,8 +204,4 @@
   .timeline::before {
     left: 4px;
   }
-
-  .timeline-item::before {
-    left: -2px;
-  }
 }

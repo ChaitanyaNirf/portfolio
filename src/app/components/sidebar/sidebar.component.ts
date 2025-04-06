@@ -78,5 +78,11 @@ export class SidebarComponent {
     this.isTimeLineHidden = !this.isTimeLineHidden;
   }
 
+  handleKey(event: KeyboardEvent, section: string) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.toggleSidebar(section);
+      event.preventDefault(); // prevents scrolling on spacebar
+    }
+  }
 
 }
