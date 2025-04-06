@@ -1,12 +1,12 @@
 .skills-container {
   padding: 20px;
-  color: #c9d1d9; /* Soft VS Code text color */
+  color: #c9d1d9; 
   padding-bottom: 50dvh;
 }
 
 .skills-container h2 {
   margin-bottom: 15px;
-  color: #58a6ff; /* GitHub/VS Code Blue */
+  color: #58a6ff; 
   text-align: center;
   font-size: 24px;
 }
@@ -52,8 +52,8 @@
 
 /* Front side */
 .skill-front {
-  background: #353b41; /* VS Code Sidebar Color */
-  border: 1px solid #30363D; /* Subtle VS Code Border */
+  background: #353b41;
+  border: 1px solid #30363D; 
   color: #c9d1d9;
   flex-direction: column;
 }
@@ -61,18 +61,18 @@
 .skill-front i {
   font-size: 30px;
   margin-bottom: 5px;
-  color: #58A6FF; /* Yellow for contrast */
+  color: #58A6FF; 
 }
 
 /* Back side */
 .skill-back {
-  background: #1F2428; /* VS Code Editor Background */
+  background: #1F2428; 
   border: 1px solid #30363D;
-  color: #58a6ff; /* VS Code Blue */
+  color: #58a6ff; 
   transform: rotateY(180deg);
 }
 
-/* Hover effect - flip animation */
+
 .skill-card:hover .skill-inner {
   transform: rotateY(180deg);
 }
@@ -98,7 +98,7 @@
   font-size: 24px;
 }
 
-/* Cool glowing effect on hover */
+
 .skills-header:hover {
   text-shadow: 0 0 8px rgba(88, 166, 255, 0.8);
   border-bottom: 2px solid #58a6ff;
@@ -115,4 +115,19 @@
   font-size: 2.5em;
   margin-bottom: 20px;
   text-align: left;
+}
+
+@media (max-width: 800px) {
+  .skill-card {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skills-grid {
+    display: grid;
+    gap: 10px;
+    row-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    justify-content: center;
+  }
 }

@@ -26,3 +26,27 @@
   border: 1px solid #30363D; /* Subtle separation */
   border-radius: 4px;
 }
+
+
+/* Existing styles remain unchanged above this */
+
+@media (max-width: 1205px) {
+  .pdf-wrapper {
+    width: 95%;
+    height: 80vh;
+    padding: 3px;
+    max-width: none;
+    box-shadow: none;
+    border-radius: 4px;
+  }
+
+  .pdf-frame {
+    border-radius: 2px;
+    border: none;
+  }
+
+  .resume-container {
+    padding-bottom: 80px;
+    padding-top: 20px;
+  }
+}

@@ -3,6 +3,10 @@
   <div class="activity-icon" (click)="toggleSidebar('Welcome')">
     <i class="fas fa-folder"></i>
   </div>
+
+  <div class="activity-icon mobile-only" (click)="toggleSidebar('Experience')">
+    <i class="fas fa-briefcase"></i>
+  </div>
   <div class="activity-icon" (click)="toggleSidebar('GitHub')">
     <i class="fab fa-github"></i>
   </div>
@@ -12,10 +16,20 @@
   <div class="activity-icon" (click)="toggleSidebar('Projects')">
     <i class="fas fa-code"></i>
   </div>
+  <div class="activity-icon mobile-only" (click)="toggleSidebar('Skills')">
+    <i class="fas fa-tools"></i>
+  </div>
+  <div class="activity-icon mobile-only" (click)="toggleSidebar('Publications')">
+    <i class="fas fa-book-open"></i>
+  </div>
+  <div class="activity-icon mobile-only" (click)="toggleSidebar('Resume')">
+    <i class="fas fa-file-pdf"></i>
+  </div>
   <div class="activity-icon" (click)="toggleSidebar('Contact')">
     <i class="fas fa-address-card"></i>
   </div>
 </div>
+
 
 <!-- Primary Sidebar -->
 <div class="sidebar" [class.hidden]="isCollapsed">

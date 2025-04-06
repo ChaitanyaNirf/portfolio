@@ -1,10 +1,10 @@
 /* Full-page layout */
 .app-container {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 30px); /* Account for navbar height */
   overflow: hidden;
-  background-color: #1E1E1E; /* VS Code Dark Theme */
   padding-top: 30px;
+  min-width: 0; /* ✅ Prevent collapsing */
 }
 
 /* Sidebar styling */
@@ -40,7 +40,7 @@ app-sidebar::-webkit-scrollbar-thumb:hover {
   background-color: #1F2428; /* Match main background */
   border-left: 1px solid #3C3C3C;
   padding: 14px;
-  min-width: none;
+  min-width: 0px;
 }
 
 /* Tabs Styling */
@@ -273,4 +273,3 @@ app-sidebar, .editor {
     gap: 6px; /* Reduce spacing */
   }
 }
-
