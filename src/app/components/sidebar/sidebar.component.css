@@ -42,7 +42,7 @@
   transition: width 0.3s ease-in-out;
 }
 
-/* Sidebar Header */
+
 .sidebar-header {
   display: flex;
   align-items: center;
@@ -101,7 +101,7 @@
 }
 
 .sidebar ul li:hover {
-  background: #3C3C3C; /* Slightly brighter highlight */
+  background: #3C3C3C; 
 }
 
 .sidebar ul li i {
@@ -109,11 +109,9 @@
   color: #58A6FF; 
 }
 
-/* 🛠 Hide Sidebar on Small Screens */
-@media (max-width: 768px) {
+@media (max-width: 786px) {
   .sidebar {
-    width: 0;
-    overflow: hidden;
+    display: none;
   }
 }
 
@@ -122,7 +120,7 @@
 }
 
 .sidebar {
-  font-size: 15px; /* Adjust this as needed */
+  font-size: 15px;
 }
 
 .leetcode-logo,
@@ -148,4 +146,14 @@
   margin-left: -65px; /* Extend it back to the left */
   width: calc(100% + 50px); /* Expand it to fill the space */
   padding-left: 60px; /* Ensure text isn't too close to the edge */
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 1025px) {
+  .mobile-only {
+    display: flex;
+  }
 }
