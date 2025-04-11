@@ -10,6 +10,6 @@ export class ResumeComponent {
   resumeUrl: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) {
-    this.resumeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://drive.google.com/file/d/1YFqdsxrgi3QBPJzZXvZP7r5dIskMx-1V/preview');
+    this.resumeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('https://drive.google.com/file/d/1YRFZpFcDljgOvKcqBYb6M4bZUEYtQjMy/preview');
   }
 }
