@@ -94,11 +94,9 @@ export class TerminalGameComponent implements OnInit, OnDestroy {
   async loadLeaderboard() {
     this.leaderboard = [];
     try {
-      if (environment.jsonbinKey && environment.jsonbinBinId) {
+      if (true) { // backend handles the key logic, so always try
         this.addTerminalLine('$ Syncing with global database...');
-        const response = await fetch(`https://api.jsonbin.io/v3/b/${environment.jsonbinBinId}`, {
-          headers: { 'X-Master-Key': environment.jsonbinKey }
-        });
+        const response = await fetch(`https://portfolio-backend-eight-hazel.vercel.app/leaderboard`);
         if (response.ok) {
           const data = await response.json();
           this.leaderboard = data.record || [];
@@ -119,8 +117,8 @@ export class TerminalGameComponent implements OnInit, OnDestroy {
       this.leaderboard = [];
     }
 
-    if (!environment.jsonbinKey && this.leaderboard.length === 0) {
-      this.addTerminalLine('$ Global DB not configured. Using Local Storage.');
+    if (this.leaderboard.length === 0) {
+      this.addTerminalLine('$ Global DB unreachable. Using Local Storage.');
     }
   }
 
@@ -139,17 +137,15 @@ export class TerminalGameComponent implements OnInit, OnDestroy {
     // Always save locally as fallback
     localStorage.setItem('portfolio_leaderboard', JSON.stringify(this.leaderboard));
 
-    // Async push to JSONBin
-    if (environment.jsonbinKey && environment.jsonbinBinId) {
+    if (true) {
        try {
          this.addTerminalLine('$ Uploading score to global database...');
-         await fetch(`https://api.jsonbin.io/v3/b/${environment.jsonbinBinId}`, {
-           method: 'PUT',
+         await fetch(`https://portfolio-backend-eight-hazel.vercel.app/leaderboard`, {
+           method: 'POST',
            headers: {
-             'Content-Type': 'application/json',
-             'X-Master-Key': environment.jsonbinKey
+             'Content-Type': 'application/json'
            },
-           body: JSON.stringify(this.leaderboard)
+           body: JSON.stringify({ record: this.leaderboard })
          });
        } catch(err) {
          console.error('Failed to save to global leaderboard', err);
