@@ -34,9 +34,9 @@
         <div class="lb-header-controls">
           <h4 class="leaderboard-title"><i class="fas fa-trophy"></i> Top 10 — All Time</h4>
           <div class="lb-filters">
-            <span [class.active]="leaderboardMode === 'all'" (click)="leaderboardMode = 'all'">All</span>
-            <span [class.active]="leaderboardMode === 'coding'" (click)="leaderboardMode = 'coding'">Coding</span>
-            <span [class.active]="leaderboardMode === 'prose'" (click)="leaderboardMode = 'prose'">Prose</span>
+            <span [class.active]="leaderboardMode === 'all'" (click)="leaderboardMode = 'all'" (keydown.enter)="leaderboardMode = 'all'" tabindex="0">All</span>
+            <span [class.active]="leaderboardMode === 'coding'" (click)="leaderboardMode = 'coding'" (keydown.enter)="leaderboardMode = 'coding'" tabindex="0">Coding</span>
+            <span [class.active]="leaderboardMode === 'prose'" (click)="leaderboardMode = 'prose'" (keydown.enter)="leaderboardMode = 'prose'" tabindex="0">Prose</span>
           </div>
         </div>
         <div class="leaderboard-table">

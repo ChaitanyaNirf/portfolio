@@ -12,7 +12,7 @@
     <span class="menu-item">Help</span>
   </div>
   
-  <div class="navbar-center" (click)="commandPalette.togglePalette()">
+  <div class="navbar-center" (click)="commandPalette.togglePalette()" (keydown.enter)="commandPalette.togglePalette()" tabindex="0">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span>Chaitanya Nirfarake — Press Ctrl+Shift+P to search</span>
   </div>
@@ -27,7 +27,9 @@
 <!-- Mobile Sidebar Overlay -->
 <div class="sidebar-overlay" 
      [class.active]="isMobileSidebarOpen" 
-     (click)="closeMobileSidebar()">
+     (click)="closeMobileSidebar()"
+     (keydown.enter)="closeMobileSidebar()"
+     tabindex="0">
 </div>
 
 <!-- Main Layout -->

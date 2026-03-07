@@ -114,7 +114,7 @@
 
 .start-btn {
   background: linear-gradient(135deg, var(--accent-dim, #1f6feb), var(--accent, #58a6ff));
-  color: white;
+  color: #0d1117;
   border: none;
   padding: 12px 32px;
   border-radius: 8px;
@@ -264,7 +264,7 @@
 
 .lb-filters span.active {
   background: var(--accent, #58a6ff);
-  color: white;
+  color: #0d1117;
   font-weight: bold;
 }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { environment } from '../../../environments/environment';
+
 
 interface TypingChallenge {
   code: string;
@@ -94,24 +94,23 @@ export class TerminalGameComponent implements OnInit, OnDestroy {
   async loadLeaderboard() {
     this.leaderboard = [];
     try {
-      if (true) { // backend handles the key logic, so always try
-        this.addTerminalLine('$ Syncing with global database...');
-        const response = await fetch(`https://portfolio-backend-eight-hazel.vercel.app/leaderboard`);
-        if (response.ok) {
-          const data = await response.json();
-          const binContent = data.record;
-          
-          if (Array.isArray(binContent)) {
-            this.leaderboard = binContent;
-          } else if (binContent && Array.isArray(binContent.leaderboard)) {
-            this.leaderboard = binContent.leaderboard;
-          } else if (binContent && Array.isArray(binContent.record)) {
-            this.leaderboard = binContent.record;
-          } else {
-            this.leaderboard = [];
-          }
-          return;
+      // backend handles the key logic, so always try
+      this.addTerminalLine('$ Syncing with global database...');
+      const response = await fetch(`https://portfolio-backend-eight-hazel.vercel.app/leaderboard`);
+      if (response.ok) {
+        const data = await response.json();
+        const binContent = data.record;
+        
+        if (Array.isArray(binContent)) {
+          this.leaderboard = binContent;
+        } else if (binContent && Array.isArray(binContent.leaderboard)) {
+          this.leaderboard = binContent.leaderboard;
+        } else if (binContent && Array.isArray(binContent.record)) {
+          this.leaderboard = binContent.record;
+        } else {
+          this.leaderboard = [];
         }
+        return;
       }
     } catch(err) {
       console.error('Failed to load global leaderboard', err);
@@ -147,19 +146,17 @@ export class TerminalGameComponent implements OnInit, OnDestroy {
     // Always save locally as fallback
     localStorage.setItem('portfolio_leaderboard', JSON.stringify(this.leaderboard));
 
-    if (true) {
-       try {
-         this.addTerminalLine('$ Uploading score to global database...');
-         await fetch(`https://portfolio-backend-eight-hazel.vercel.app/leaderboard`, {
-           method: 'POST',
-           headers: {
-             'Content-Type': 'application/json'
-           },
-           body: JSON.stringify({ leaderboard: this.leaderboard })
-         });
-       } catch(err) {
-         console.error('Failed to save to global leaderboard', err);
-       }
+    try {
+      this.addTerminalLine('$ Uploading score to global database...');
+      await fetch(`https://portfolio-backend-eight-hazel.vercel.app/leaderboard`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ leaderboard: this.leaderboard })
+      });
+    } catch(err) {
+      console.error('Failed to save to global leaderboard', err);
     }
 
     // Check if this entry is on the leaderboard

@@ -1,5 +1,5 @@
-<div class="palette-overlay" *ngIf="isVisible" (click)="closePalette()">
-  <div class="palette-modal" (click)="$event.stopPropagation()">
+<div class="palette-overlay" *ngIf="isVisible" (click)="closePalette()" (keydown.enter)="closePalette()" tabindex="0">
+  <div class="palette-modal" (click)="$event.stopPropagation()" (keydown.enter)="$event.stopPropagation()" tabindex="0">
     <div class="palette-input-container">
       <span class="prompt-icon">></span>
       <input 
@@ -25,6 +25,8 @@
           class="command-item" 
           [class.selected]="i === selectedIndex"
           (click)="executeCommand(cmd)"
+          (keydown.enter)="executeCommand(cmd)"
+          tabindex="0"
           (mouseenter)="selectedIndex = i"
         >
           <div class="cmd-icon"><i [class]="cmd.icon"></i></div>

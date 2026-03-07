@@ -52,21 +52,21 @@ export class CommandPaletteComponent implements OnInit {
         title: 'Open GitHub Profile',
         category: 'External',
         icon: 'fab fa-github',
-        action: () => window.open('https://github.com/ChaitanyaNirf', '_blank')
+        action: () => globalThis.open('https://github.com/ChaitanyaNirf', '_blank')
       },
       {
         id: 'action-linkedin',
         title: 'Open LinkedIn Profile',
         category: 'External',
         icon: 'fab fa-linkedin',
-        action: () => window.open('https://www.linkedin.com/in/chaitanya-nirfarake-175570222', '_blank')
+        action: () => globalThis.open('https://www.linkedin.com/in/chaitanya-nirfarake-175570222', '_blank')
       },
       {
         id: 'action-email',
         title: 'Send Email',
         category: 'External',
         icon: 'fas fa-envelope',
-        action: () => window.location.href = 'mailto:chaitanya.nirfarake@gmail.com'
+        action: () => globalThis.location.href = 'mailto:chaitanya.nirfarake@gmail.com'
       }
     ];
 
@@ -128,13 +128,13 @@ export class CommandPaletteComponent implements OnInit {
 
   filterCommands() {
     const query = this.searchQuery.toLowerCase().trim();
-    if (!query) {
-      this.filteredCommands = [...this.commands];
-    } else {
+    if (query) {
       this.filteredCommands = this.commands.filter(cmd => 
         cmd.title.toLowerCase().includes(query) || 
         cmd.category.toLowerCase().includes(query)
       );
+    } else {
+      this.filteredCommands = [...this.commands];
     }
     this.selectedIndex = 0;
   }
