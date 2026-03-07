@@ -99,7 +99,17 @@ export class TerminalGameComponent implements OnInit, OnDestroy {
         const response = await fetch(`https://portfolio-backend-eight-hazel.vercel.app/leaderboard`);
         if (response.ok) {
           const data = await response.json();
-          this.leaderboard = data.record || [];
+          const binContent = data.record;
+          
+          if (Array.isArray(binContent)) {
+            this.leaderboard = binContent;
+          } else if (binContent && Array.isArray(binContent.leaderboard)) {
+            this.leaderboard = binContent.leaderboard;
+          } else if (binContent && Array.isArray(binContent.record)) {
+            this.leaderboard = binContent.record;
+          } else {
+            this.leaderboard = [];
+          }
           return;
         }
       }
@@ -145,7 +155,7 @@ export class TerminalGameComponent implements OnInit, OnDestroy {
            headers: {
              'Content-Type': 'application/json'
            },
-           body: JSON.stringify({ record: this.leaderboard })
+           body: JSON.stringify({ leaderboard: this.leaderboard })
          });
        } catch(err) {
          console.error('Failed to save to global leaderboard', err);
