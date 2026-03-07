@@ -12,9 +12,9 @@
     <span class="menu-item">Help</span>
   </div>
   
-  <div class="navbar-center">
+  <div class="navbar-center" (click)="commandPalette.togglePalette()" (keydown.enter)="commandPalette.togglePalette()" tabindex="0">
     <i class="fa-solid fa-magnifying-glass"></i>
-    <span>Chaitanya Nirfarake - Portfolio</span>
+    <span>Chaitanya Nirfarake — Press Ctrl+Shift+P to search</span>
   </div>
 
   <div class="navbar-right">
@@ -24,9 +24,21 @@
   </div>
 </header>
 
+<!-- Mobile Sidebar Overlay -->
+<div class="sidebar-overlay" 
+     [class.active]="isMobileSidebarOpen" 
+     (click)="closeMobileSidebar()"
+     (keydown.enter)="closeMobileSidebar()"
+     tabindex="0">
+</div>
+
 <!-- Main Layout -->
 <div class="app-container">
-  <app-sidebar (sectionSelected)="openSection($event)"></app-sidebar>
+  <app-sidebar 
+    [class.sidebar-collapsed]="isSidebarCollapsed"
+    [class.sidebar-mobile-open]="isMobileSidebarOpen"
+    (sectionSelected)="openSection($event)">
+  </app-sidebar>
   
   <div class="editor">
     <app-tabs 
@@ -36,9 +48,12 @@
       (tabChanged)="switchTab($event)">
     </app-tabs>
     
-    <app-editor [content]="editorContent" [activeTab]="activeTab"></app-editor>
+    <app-editor [content]="editorContent" [activeTab]="activeTab" (navigateToGame)="openSection('game')"></app-editor>
   </div>
 </div>
+
+<!-- Command Palette -->
+<app-command-palette #commandPalette="commandPalette" (commandNavigate)="openSection($event)"></app-command-palette>
 
 <!-- VS Code-Style Footer -->
 <footer class="vscode-footer">

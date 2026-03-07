@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-welcome',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
+  @Output() openGame = new EventEmitter<void>();
+
   text = 'Welcome to my portfolio,';
   typedText = '';
   index = 0;
@@ -18,7 +20,11 @@ export class WelcomeComponent implements OnInit {
     if (this.index < this.text.length) {
       this.typedText += this.text.charAt(this.index);
       this.index++;
-      setTimeout(() => this.typeText(), 100); // Adjust speed here
+      setTimeout(() => this.typeText(), 100);
     }
+  }
+
+  launchGame() {
+    this.openGame.emit();
   }
 }

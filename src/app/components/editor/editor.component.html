@@ -1,57 +1,37 @@
 <div class="content">
-  <ng-container *ngIf="activeTab.toLowerCase() === 'resume'; else checkLeetcode">
-    <app-resume></app-resume>
-  </ng-container>
-
-  <ng-template #checkLeetcode>
-    <ng-container *ngIf="activeTab.toLowerCase() === 'leetcode'; else checkSkills">
+  @switch (activeTab.toLowerCase()) {
+    @case ('resume') {
+      <app-resume></app-resume>
+    }
+    @case ('leetcode') {
       <app-leetcode></app-leetcode>
-    </ng-container>
-  </ng-template>
-
-  <ng-template #checkSkills>
-    <ng-container *ngIf="activeTab.toLowerCase() === 'skills'; else checkGithub">
+    }
+    @case ('skills') {
       <app-skills></app-skills>
-    </ng-container>
-  </ng-template>
-
-  <ng-template #checkGithub>
-    <ng-container *ngIf="activeTab.toLowerCase() === 'github'; else checkWelcome">
+    }
+    @case ('github') {
       <app-github></app-github>
-    </ng-container>
-  </ng-template>
-
-  <ng-template #checkWelcome>
-    <ng-container *ngIf="activeTab.toLowerCase() === 'welcome'; else checkExperience">
-      <app-welcome></app-welcome>
-    </ng-container>
-  </ng-template>
-
-  <ng-template #checkExperience>
-    <ng-container *ngIf="activeTab.toLowerCase() === 'experience'; else checkPublication">
+    }
+    @case ('welcome') {
+      <app-welcome (openGame)="onOpenGame()"></app-welcome>
+    }
+    @case ('experience') {
       <app-experience></app-experience>
-    </ng-container>
-  </ng-template>
-
-  <ng-template #checkPublication>
-    <ng-container *ngIf="activeTab.toLowerCase() === 'publications'; else checkProjects">
+    }
+    @case ('publications') {
       <app-publications></app-publications>
-    </ng-container>
-  </ng-template>
-
-  <ng-template #checkProjects>
-    <ng-container *ngIf="activeTab.toLowerCase() === 'projects'; else checkContact">
+    }
+    @case ('projects') {
       <app-projects></app-projects>
-    </ng-container>
-  </ng-template>
-
-  <ng-template #checkContact>
-    <ng-container *ngIf="activeTab.toLowerCase() === 'contact'; else defaultContent">
+    }
+    @case ('contact') {
       <app-contact></app-contact>
-    </ng-container>
-  </ng-template>
-
-  <ng-template #defaultContent>
-    <div [innerHTML]="sanitizedContent"></div>
-  </ng-template>
+    }
+    @case ('game') {
+      <app-terminal-game></app-terminal-game>
+    }
+    @default {
+      <div [innerHTML]="sanitizedContent"></div>
+    }
+  }
 </div>

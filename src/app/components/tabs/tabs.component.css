@@ -5,8 +5,8 @@
 }
 
 .scroll-btn {
-  background: rgba(31, 36, 40, 0.8); 
-  color: #D4D4D4;
+  background: rgba(31, 36, 40, 0.8);
+  color: var(--text-primary, #D4D4D4);
   border: none;
   cursor: pointer;
   padding: 6px 10px;
@@ -19,15 +19,15 @@
 }
 
 .tabs {
-  background: #1F2428; 
-  padding: 6px 12px;
-  border-bottom: 1px solid #3C3C3C; 
+  background: var(--bg-primary, #1F2428);
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border-color, #3C3C3C);
   display: flex;
   align-items: center;
-  overflow-x: auto; 
-  white-space: nowrap; 
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   flex-grow: 1;
 }
 
@@ -38,46 +38,68 @@
 .tabs span {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: #24292E; 
-  border: 1px solid #3C3C3C; 
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--bg-secondary, #24292E);
+  border: 1px solid var(--border-color, #3C3C3C);
   border-bottom: none;
-  margin-right: 5px;
+  margin-right: 4px;
   cursor: pointer;
-  color: #D4D4D4; 
-  font-size: 14px;
-  border-radius: 5px 5px 0 0;
-  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
+  color: var(--text-primary, #D4D4D4);
+  font-size: 13px;
+  border-radius: 4px 4px 0 0;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
 }
 
 .tabs span:hover {
-  background: #2D333B; 
+  background: var(--bg-hover, #2D333B);
   color: #EAEAEA;
 }
 
 .tabs span.active {
-  background: #24292E; 
+  background: var(--bg-secondary, #24292E);
   color: #FFFFFF;
-  border-color: #2a67ad; 
-  box-shadow: 0px -2px 8px rgba(22, 86, 159, 0.656); 
+  border-color: var(--accent-blue, #2B67AD);
+  box-shadow: 0px -2px 6px rgba(22, 86, 159, 0.5);
 }
 
 .tabs span button {
   background: none;
   border: none;
-  color: #7F849C; 
-  font-size: 14px;
+  color: #7F849C;
+  font-size: 12px;
   cursor: pointer;
   transition: color 0.2s ease;
+  padding: 0;
+  line-height: 1;
 }
 
 .tabs span button:hover {
-  color: #58A6FF; 
+  color: var(--accent-blue-light, #58A6FF);
 }
 
+/* ===== RESPONSIVE: Tablet (≤768px) ===== */
 @media (max-width: 768px) {
   .tabs {
-    margin-left: 40px; 
+    padding: 3px 6px;
+  }
+
+  .tabs span {
+    padding: 4px 8px;
+    font-size: 12px;
+    gap: 4px;
+  }
+
+  .tabs span button {
+    font-size: 10px;
+  }
+}
+
+/* ===== RESPONSIVE: Mobile (≤480px) ===== */
+@media (max-width: 480px) {
+  .tabs span {
+    padding: 3px 6px;
+    font-size: 11px;
   }
 }
