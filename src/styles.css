@@ -1,26 +1,26 @@
-/* ===== CSS Custom Properties (VS Code Dark+ Premium Theme) ===== */
+/* ===== CSS Custom Properties (Retro Terminal Theme) ===== */
 :root {
-  /* Background Colors — deeper, richer dark tones */
-  --bg-primary: #1a1e24;
-  --bg-secondary: #21262d;
-  --bg-navbar: #161b22;
-  --bg-hover: #30363d;
-  --bg-surface: #0d1117;
+  /* Background Colors — pure dense black/dark gray */
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0a;
+  --bg-navbar: #000000;
+  --bg-hover: #111111;
+  --bg-surface: #0a0e12;
 
   /* Border */
-  --border-color: #30363d;
-  --border-highlight: #484f58;
+  --border-color: #1f3a22;
+  --border-highlight: #2ea043;
 
-  /* Text */
-  --text-primary: #e6edf3;
-  --text-secondary: #8b949e;
-  --text-muted: #656d76;
+  /* Text — Core Terminal Aesthetics (Green/Amber/Blue) */
+  --text-primary: #3fb950;
+  --text-secondary: #2ea043;
+  --text-muted: #1f6e33;
 
-  /* Accent — vibrant teal/cyan instead of plain blue */
-  --accent: #58a6ff;
-  --accent-bright: #79c0ff;
-  --accent-dim: #1f6feb;
-  --accent-glow: rgba(88, 166, 255, 0.15);
+  /* Accent — Hacker Green */
+  --accent: #3fb950;
+  --accent-bright: #56d364;
+  --accent-dim: #238636;
+  --accent-glow: rgba(63, 185, 80, 0.2);
 
   /* Semantic Colors */
   --success: #3fb950;
@@ -28,8 +28,8 @@
   --error: #f85149;
   --info: #58a6ff;
 
-  /* Code syntax — richer colors */
-  --code-comment: #8b949e;
+  /* Code syntax — matching terminal output styles */
+  --code-comment: #6e7681;
   --code-keyword: #ff7b72;
   --code-variable: #ffa657;
   --code-function: #d2a8ff;
@@ -38,11 +38,11 @@
   --code-number: #79c0ff;
 
   /* Layout */
-  --navbar-height: 30px;
-  --footer-height: 24px;
-  --activity-bar-width: 50px;
+  --navbar-height: 35px;
+  --footer-height: 0px; /* Removing footer height requirement */
+  --activity-bar-width: 0px; /* Removing activity bar */
   --sidebar-width: 250px;
-  --mobile-bottom-bar-height: 48px;
+  --mobile-bottom-bar-height: 0px;
 }
 
 /* ===== Global Reset ===== */
@@ -68,7 +68,7 @@ app-root {
 }
 
 * {
-  font-family: "Segoe WPC", "Segoe UI", sans-serif;
+  font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
 }
 
 /* Utility class for screen readers */

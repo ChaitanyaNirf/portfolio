@@ -1,21 +1,16 @@
 .terminal-container {
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
-  border-radius: 10px;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  border: 1px solid var(--border-color, #30363d);
+  box-shadow: none;
+  border: none;
   margin-bottom: 80px;
 }
 
-/* Terminal Header (macOS-style) */
+/* Terminal Header (macOS-style) - removed since app header has it */
 .terminal-header {
-  background: var(--bg-navbar, #161b22);
-  padding: 8px 14px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border-bottom: 1px solid var(--border-color, #30363d);
+  display: none;
 }
 
 .terminal-dots {
