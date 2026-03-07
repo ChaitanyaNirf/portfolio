@@ -15,19 +15,25 @@ export class SidebarComponent {
   isFileListHidden = false;
   isOutLineHidden = true;
   isTimeLineHidden = true;
+
   constructor() {
     this.updateSidebarVisibility();
   }
 
   openSection(section: string) {
     this.sectionSelected.emit(section);
+    // On mobile, close the sidebar panel after selection
+    if (window.innerWidth <= 768) {
+      this.isCollapsed = true;
+    }
   }
 
   toggleSidebar(section: string) {
     if (window.innerWidth <= 768) {
+      // On mobile, toggle the sidebar drawer and also navigate
       this.isCollapsed = !this.isCollapsed;
     }
-    this.openSection(section);
+    this.sectionSelected.emit(section);
   }
 
   @HostListener('window:resize', [])
@@ -36,7 +42,7 @@ export class SidebarComponent {
   }
 
   updateSidebarVisibility() {
-    this.isCollapsed = window.innerWidth <= 768;
+    this.isCollapsed = window.innerWidth <= 1024;
   }
 
   getFormattedTabName(tab: string): string {
@@ -54,15 +60,17 @@ export class SidebarComponent {
       case 'resume':
         return 'resume.pdf';
       case 'github':
-        return 'github'; // No extension needed
+        return 'github';
       case 'skills':
         return 'skills.css';
       case 'projects':
         return 'projects.ts';
       case 'leetcode':
         return 'leetcode';
+      case 'game':
+        return 'game.exe';
       default:
-        return tab; // Fallback to the original name if not mapped
+        return tab;
     }
   }
 
@@ -81,8 +89,7 @@ export class SidebarComponent {
   handleKey(event: KeyboardEvent, section: string) {
     if (event.key === 'Enter' || event.key === ' ') {
       this.toggleSidebar(section);
-      event.preventDefault(); // prevents scrolling on spacebar
+      event.preventDefault();
     }
   }
-
 }

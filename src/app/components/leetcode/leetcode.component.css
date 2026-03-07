@@ -3,8 +3,7 @@
   max-width: 100%;
   margin: auto;
   padding: 20px;
-  color: #D4D4D4;
-  /* Softer text color */
+  color: var(--text-primary, #D4D4D4);
   padding-bottom: 10px;
 }
 
@@ -23,15 +22,14 @@
 .leetcode-username {
   font-size: 22px;
   font-weight: bold;
-  color: #58A6FF;
-  /* VS Code Blue */
+  color: var(--accent-blue-light, #58A6FF);
   text-decoration: none;
   display: block;
   margin-bottom: 10px;
 }
 
 .leetcode-username span {
-  color: #58A6FF;
+  color: var(--accent-blue-light, #58A6FF);
 }
 
 .leetcode-username:hover {
@@ -52,6 +50,7 @@ p {
   display: flex;
   gap: 15px;
   margin-top: 10px;
+  flex-wrap: wrap;
 }
 
 .difficulty-item {
@@ -91,6 +90,10 @@ p {
 }
 
 /* Heatmap */
+.whole-container {
+  padding-bottom: 80px;
+}
+
 .heatmap-container {
   display: flex;
   flex-wrap: wrap;
@@ -98,29 +101,32 @@ p {
   gap: 10px;
   padding: 10px;
   max-width: 100%;
-  padding-bottom: 120px;
-  padding-right: 0%;
+  padding-bottom: 80px;
 }
 
 /* Month Section */
 .month-section {
-  background: #24292E;
-  /* Darker VS Code Theme */
+  background: var(--bg-surface, #0d1117);
+  border: 1px solid var(--border-color, #30363d);
   padding: 10px;
   border-radius: 8px;
   width: calc(25% - 15px);
   min-width: 120px;
   max-width: 240px;
-  box-shadow: 0 4px 6px rgba(98, 95, 95, 0.2);
   text-align: center;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease;
   padding-bottom: 20px;
+}
+
+.month-section:hover {
+  border-color: var(--accent, #58a6ff);
+  box-shadow: 0 4px 20px rgba(88, 166, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 .month-section h3 {
   font-size: 1.1rem;
   color: #9CDCFE;
-  /* Soft Blue */
   margin-bottom: 5px;
 }
 
@@ -141,15 +147,12 @@ p {
 
 .heatmap td {
   border: 1px solid #30363D;
-  /* Subtle border */
   width: 14%;
   transition: all 0.2s ease-in-out;
 }
 
-/* Neon Hover Effect */
 .heatmap td:hover {
   background: #1F4068;
-  /* Dark Blue */
   cursor: pointer;
   box-shadow: 0px 0px 6px rgba(100, 200, 255, 0.6);
 }
@@ -162,20 +165,19 @@ p {
   animation: fadeIn 0.5s ease-in-out;
 }
 
-@media (max-width: 1025px) {
-  .leetcode-container {
-    padding: 15px;
-    padding-right: 0%;
-  }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-  .whole-container {
-    padding-bottom: 40dvh;
-    margin-left: -2%;
-    min-height: 85dvh;
+/* ===== RESPONSIVE: Tablet (≤768px) ===== */
+@media (max-width: 768px) {
+  .leetcode-container {
+    padding: 12px;
   }
 
   .difficulty-stats {
-    align-items: flex-start;
+    gap: 12px;
   }
 
   .reputation {
@@ -188,7 +190,7 @@ p {
 
   .difficulty-item {
     font-size: 14px;
-    padding: 6px 12px;
+    padding: 4px 8px;
   }
 
   .difficulty-count {
@@ -197,29 +199,59 @@ p {
 
   .heatmap th,
   .heatmap td {
-    font-size: 0.40rem;
-    padding: 1.5px;
+    font-size: 0.45rem;
+    padding: 2px;
   }
 
-  .loading-container {
-    text-align: center;
-    font-size: 90%;
-    color: #c7d0da;
-    padding: 20px;
-    animation: fadeIn 0.5s ease-in-out;
-    max-width: 70vw;
+  .month-section {
+    width: calc(33.33% - 10px);
+    min-width: 100px;
+    font-size: 0.85rem;
   }
 
   .month-section h3 {
-    font-size: .7rem;
-    color: #9CDCFE;
-    /* Soft Blue */
-    margin-bottom: 5px;
+    font-size: 0.75rem;
   }
 
-  /* Month Section */
+  .loading-container {
+    font-size: 0.9em;
+  }
+}
+
+/* ===== RESPONSIVE: Mobile (≤480px) ===== */
+@media (max-width: 480px) {
+  .leetcode-container {
+    padding: 8px;
+  }
+
+  .leetcode-username {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .difficulty-stats {
+    gap: 8px;
+  }
+
+  .difficulty-item {
+    font-size: 13px;
+  }
+
   .month-section {
-    min-width: 100px;
-    font-size: 0.8rem;
+    width: calc(50% - 8px);
+    min-width: 90px;
+  }
+
+  .month-section h3 {
+    font-size: 0.65rem;
+  }
+
+  .heatmap th,
+  .heatmap td {
+    font-size: 0.35rem;
+    padding: 1px;
   }
 }

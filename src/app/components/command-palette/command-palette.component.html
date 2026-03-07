@@ -1,0 +1,37 @@
+<div class="palette-overlay" *ngIf="isVisible" (click)="closePalette()">
+  <div class="palette-modal" (click)="$event.stopPropagation()">
+    <div class="palette-input-container">
+      <span class="prompt-icon">></span>
+      <input 
+        #searchInput
+        type="text" 
+        class="palette-input" 
+        [(ngModel)]="searchQuery" 
+        (ngModelChange)="onSearchChange()"
+        placeholder="Type a command or search..."
+        autocomplete="off"
+        spellcheck="false"
+      >
+    </div>
+
+    <div class="palette-results">
+      <div class="no-results" *ngIf="filteredCommands.length === 0">
+        No commands matching '{{searchQuery}}'
+      </div>
+      
+      <ng-container *ngFor="let cmd of filteredCommands; let i = index">
+        <!-- Optional: Group by category if needed, here we just show the category badge -->
+        <div 
+          class="command-item" 
+          [class.selected]="i === selectedIndex"
+          (click)="executeCommand(cmd)"
+          (mouseenter)="selectedIndex = i"
+        >
+          <div class="cmd-icon"><i [class]="cmd.icon"></i></div>
+          <div class="cmd-title">{{cmd.title}}</div>
+          <div class="cmd-category">{{cmd.category}}</div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

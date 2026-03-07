@@ -1,0 +1,179 @@
+<div class="terminal-container">
+  <div class="terminal-header">
+    <div class="terminal-dots">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+    </div>
+    <span class="terminal-title">TERMINAL — Coding Speed Test</span>
+  </div>
+
+  <div class="terminal-body">
+    <!-- Terminal Log -->
+    <div class="terminal-log">
+      <div *ngFor="let line of terminalLines" class="log-line">{{line}}</div>
+    </div>
+
+    <!-- Countdown -->
+    <div *ngIf="isCountingDown" class="countdown">
+      <span class="countdown-number">{{countdown}}</span>
+    </div>
+
+    <!-- Game: Idle State -->
+    <div *ngIf="gameState === 'idle' && !isCountingDown" class="idle-state">
+      <div class="game-intro">
+        <p class="intro-text"><span class="prompt">$</span> How fast can you type code?</p>
+        <p class="intro-sub">5 rounds of coding snippets. Type them perfectly. Make the leaderboard!</p>
+      </div>
+      <button class="start-btn" (click)="startGame()">
+        <i class="fas fa-terminal"></i> Start Game
+      </button>
+
+      <!-- Leaderboard in Idle -->
+      <div *ngIf="leaderboard.length > 0" class="leaderboard-section">
+        <div class="lb-header-controls">
+          <h4 class="leaderboard-title"><i class="fas fa-trophy"></i> Top 10 — All Time</h4>
+          <div class="lb-filters">
+            <span [class.active]="leaderboardMode === 'all'" (click)="leaderboardMode = 'all'">All</span>
+            <span [class.active]="leaderboardMode === 'coding'" (click)="leaderboardMode = 'coding'">Coding</span>
+            <span [class.active]="leaderboardMode === 'prose'" (click)="leaderboardMode = 'prose'">Prose</span>
+          </div>
+        </div>
+        <div class="leaderboard-table">
+          <div class="lb-header-row">
+            <span class="lb-rank">Rank</span>
+            <span class="lb-name">Name</span>
+            <span class="lb-wpm">WPM</span>
+            <span class="lb-acc">Acc</span>
+            <span class="lb-date">Date</span>
+          </div>
+          <div *ngFor="let entry of getFilteredLeaderboard(); let i = index" class="lb-row" [class.lb-highlight]="i < 3">
+            <span class="lb-rank">{{getRankEmoji(i)}}</span>
+            <span class="lb-name">
+              {{entry.name}}
+              <span class="lb-mode-badge" [ngClass]="entry.mode || 'coding'">{{entry.mode === 'prose' ? 'Prose' : 'Code'}}</span>
+            </span>
+            <span class="lb-wpm">{{entry.wpm}}</span>
+            <span class="lb-acc">{{entry.accuracy}}%</span>
+            <span class="lb-date">{{entry.date}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game: Name Entry & Mode Selection -->
+    <div *ngIf="gameState === 'name-entry'" class="name-entry-state">
+      <p class="intro-text"><span class="prompt">$</span> Setup your session:</p>
+      
+      <div class="mode-selector">
+        <p class="mode-label">Select Text Mode:</p>
+        <div class="mode-options">
+          <button 
+            class="mode-btn" 
+            [class.active]="gameMode === 'coding'"
+            (click)="setGameMode('coding')">
+            <i class="fas fa-code"></i> Coding
+          </button>
+          <button 
+            class="mode-btn" 
+            [class.active]="gameMode === 'prose'"
+            (click)="setGameMode('prose')">
+            <i class="fas fa-align-left"></i> Prose
+          </button>
+        </div>
+      </div>
+      <input 
+        type="text"
+        class="name-input"
+        [(ngModel)]="playerName"
+        (keydown)="onNameKeydown($event)"
+        placeholder="Your name..."
+        maxlength="20"
+        autofocus
+      >
+      <button class="start-btn" (click)="beginAfterName()">
+        <i class="fas fa-play"></i> Begin!
+      </button>
+    </div>
+
+    <!-- Game: Playing State -->
+    <div *ngIf="gameState === 'playing' && !isCountingDown" class="playing-state">
+      <div class="challenge-header">
+        <span class="round-badge">Round {{round}}/{{totalRounds}}</span>
+        <span class="lang-badge">{{currentChallenge.language}}</span>
+        <span class="timer">{{elapsedTime.toFixed(1)}}s</span>
+      </div>
+
+      <p class="challenge-desc">// {{currentChallenge.description}}</p>
+
+      <div class="code-display">
+        <span 
+          *ngFor="let char of currentChallenge.code.split(''); let i = index"
+          [class]="getCharClass(i)"
+        >{{char}}</span>
+        <span class="cursor-blink">|</span>
+      </div>
+
+      <input 
+        #typingInput
+        type="text"
+        class="typing-input"
+        [value]="userInput"
+        (input)="onInput($event)"
+        autocomplete="off"
+        autocapitalize="off"
+        autocorrect="off"
+        spellcheck="false"
+        placeholder="Start typing..."
+      >
+    </div>
+
+    <!-- Game: Finished State -->
+    <div *ngIf="gameState === 'finished'" class="finished-state">
+      <div class="results-header">
+        <h3 *ngIf="isNewRecord">🏆 You made the Top 10!</h3>
+        <h3 *ngIf="!isNewRecord">🎉 Challenge Complete!</h3>
+      </div>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-value">{{score}}</span>
+          <span class="stat-label">Score</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">{{wpm}}</span>
+          <span class="stat-label">Avg WPM</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value">{{accuracy}}%</span>
+          <span class="stat-label">Accuracy</span>
+        </div>
+      </div>
+
+      <div class="round-results">
+        <div *ngFor="let result of completedChallenges; let i = index" class="round-row">
+          <span class="round-num">#{{i + 1}}</span>
+          <span class="round-code">{{result.challenge.code}}</span>
+          <span class="round-wpm">{{result.wpm}} WPM</span>
+          <span class="round-time">{{result.time}}s</span>
+        </div>
+      </div>
+
+      <!-- Leaderboard after game -->
+      <div *ngIf="leaderboard.length > 0" class="leaderboard-section compact">
+        <h4 class="leaderboard-title"><i class="fas fa-trophy"></i> Leaderboard</h4>
+        <div class="leaderboard-table">
+          <div *ngFor="let entry of getFilteredLeaderboard(); let i = index" class="lb-row" [class.lb-highlight]="i < 3">
+            <span class="lb-rank">{{getRankEmoji(i)}}</span>
+            <span class="lb-name">{{entry.name}}</span>
+            <span class="lb-wpm">{{entry.wpm}} WPM</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="start-btn" (click)="resetGame()">
+        <i class="fas fa-redo"></i> Play Again
+      </button>
+    </div>
+  </div>
+</div>
