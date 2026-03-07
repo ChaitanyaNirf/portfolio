@@ -1,93 +1,71 @@
-/* ===== VS Code Navbar ===== */
+/* ===== Terminal Navbar ===== */
 .vscode-navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: var(--navbar-height);
-  background-color: var(--bg-navbar);
+  background: linear-gradient(to bottom, #1a1b1e, #141518);
   color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
+  padding: 0 16px;
   font-size: 13px;
   user-select: none;
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-.navbar-left {
+.terminal-dots {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.4);
+}
+.dot.red { background: #f85149; }
+.dot.yellow { background: #d29922; }
+.dot.green { background: #3fb950; }
+
+.navbar-center {
+  flex: 0 1 auto;
+  min-width: 0;
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex: 1;
+  justify-content: center;
+  gap: 8px;
+  color: #a5d6ff;
+  font-family: 'Fira Code', 'Cascadia Code', monospace;
+  font-weight: 500;
+  padding: 4px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.prompt {
+  color: var(--success);
+  font-weight: bold;
 }
 
 .navbar-right {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 12px;
-  min-width: 90px;
   flex: 1;
 }
 
-.navbar-center {
-  flex: 0 1 500px;
-  min-width: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: #c9d1d9;
-  white-space: nowrap;
-  background-color: var(--bg-secondary, #161b22);
-  padding: 4px 16px;
-  border: 1px solid var(--border-color, #30363d);
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.navbar-center span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.navbar-center:hover {
-  background-color: #24292e;
-  border-color: var(--text-muted, #656d76);
-}
-
-.menu-item {
-  cursor: pointer;
-  padding: 4px 6px;
-  transition: background 0.2s ease-in-out;
-}
-
-.menu-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.navbar-right i {
-  cursor: pointer;
-  padding: 2px;
-  transition: background 0.2s ease-in-out;
-}
-
-.navbar-right i:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.navbar-right .fa-xmark:hover {
-  background-color: #c82333;
-  color: white;
-}
-
-.vscode-logo {
-  width: 20px;
-  height: 20px;
+.terminal-user {
+  color: var(--text-secondary);
+  font-weight: bold;
 }
 
 /* ===== Main Layout ===== */
@@ -139,77 +117,6 @@ app-sidebar.sidebar-collapsed {
   min-height: 0;
 }
 
-/* ===== VS Code Footer ===== */
-.vscode-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: var(--footer-height);
-  background: var(--bg-navbar);
-  color: var(--text-primary);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 15px;
-  font-size: 12px;
-  border-top: 1px solid var(--border-color);
-  z-index: 1000;
-}
-
-.left-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.right-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  cursor: pointer;
-  padding: 0 5px;
-}
-
-.right-section i {
-  color: var(--text-primary);
-  transition: color 0.2s ease-in-out;
-}
-
-.right-section:hover i {
-  color: #FFFFFF;
-}
-
-.fa-code-branch,
-.error-icon,
-.warning-icon {
-  color: var(--text-primary);
-}
-
-.divider {
-  width: 1px;
-  height: 15px;
-  background: var(--border-color);
-  margin: 0 8px;
-}
-
-/* ===== Mobile Sidebar Overlay ===== */
-.sidebar-overlay {
-  display: none;
-  position: fixed;
-  top: var(--navbar-height);
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 90;
-}
-
-.sidebar-overlay.active {
-  display: block;
-}
-
 /* ===== Smooth Transitions ===== */
 app-sidebar, .editor {
   transition: all 0.3s ease-in-out;
@@ -220,23 +127,10 @@ app-sidebar, .editor {
   .navbar-center span {
     display: none;
   }
-  .navbar-center {
-    max-width: 25%;
-    padding: 4px 3%;
-  }
 }
 
 /* ===== RESPONSIVE: Laptop (≤1024px) ===== */
 @media (max-width: 1024px) {
-  .navbar-left .menu-item {
-    display: none;
-  }
-
-  .navbar-left {
-    gap: 6px;
-  }
-
-  /* Sidebar panel auto-collapses, only activity bar visible */
   app-sidebar {
     width: var(--activity-bar-width);
     min-width: var(--activity-bar-width);
@@ -246,12 +140,9 @@ app-sidebar, .editor {
 /* ===== RESPONSIVE: Tablet (≤768px) ===== */
 @media (max-width: 768px) {
   .app-container {
-    height: calc(100vh - var(--navbar-height) - var(--footer-height) - var(--mobile-bottom-bar-height));
+    height: calc(100vh - var(--navbar-height) - var(--mobile-bottom-bar-height));
   }
 
-  /* Remove sidebar from flex flow entirely.
-     The activity bar and sidebar drawer are positioned fixed
-     independently via sidebar.component.css */
   app-sidebar {
     display: contents;
   }
@@ -274,7 +165,6 @@ app-sidebar, .editor {
   }
 
   .navbar-right {
-    min-width: 70px;
-    gap: 8px;
+    display: none;
   }
 }

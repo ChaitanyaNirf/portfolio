@@ -1,26 +1,18 @@
-<!-- VS Code-Style Navbar -->
+<!-- Terminal Window Header -->
 <header class="vscode-navbar">
-  <div class="navbar-left">
-    <img src="https://img.icons8.com/?size=100&id=0OQR1FYCuA9f&format=png&color=000000" alt="VS Code Logo" class="vscode-logo">
-    <span class="menu-item">File</span>
-    <span class="menu-item">Edit</span>
-    <span class="menu-item">Selection</span>
-    <span class="menu-item">View</span>
-    <span class="menu-item">Go</span>
-    <span class="menu-item">Run</span>
-    <span class="menu-item">Terminal</span>
-    <span class="menu-item">Help</span>
+  <div class="navbar-left terminal-dots">
+    <span class="dot red"></span>
+    <span class="dot yellow"></span>
+    <span class="dot green"></span>
   </div>
   
   <div class="navbar-center" (click)="commandPalette.togglePalette()" (keydown.enter)="commandPalette.togglePalette()" tabindex="0">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span>Chaitanya Nirfarake — Press Ctrl+Shift+P to search</span>
+    <span class="prompt">$</span>
+    <span>./portfolio.sh — Press Ctrl+Shift+P to execute commands</span>
   </div>
 
   <div class="navbar-right">
-    <i class="fa-regular fa-window-minimize"></i>
-    <i class="fa-regular fa-window-maximize"></i>
-    <i class="fa-solid fa-xmark"></i>
+    <span class="terminal-user">chaitanya&#64;portfolio:~</span>
   </div>
 </header>
 
@@ -55,19 +47,3 @@
 <!-- Command Palette -->
 <app-command-palette #commandPalette="commandPalette" (commandNavigate)="openSection($event)"></app-command-palette>
 
-<!-- VS Code-Style Footer -->
-<footer class="vscode-footer">
-  <div class="left-section">
-    <i class="fa-solid fa-code-branch"></i>
-    <span>main</span>
-    <span class="divider"></span>
-    <i class="fa-solid fa-xmark error-icon"></i>
-    <span>0</span>
-    <i class="fa-solid fa-triangle-exclamation warning-icon"></i>
-    <span>0</span>
-  </div>
-
-  <div class="right-section">
-    <i class="fa-regular fa-bell"></i>
-  </div>
-</footer>
